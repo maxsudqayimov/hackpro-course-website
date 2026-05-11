@@ -7,7 +7,7 @@ export default function Advantages() {
       <SectionHeading
         eyebrow="Advantages"
         title="Nima uchun HackPro?"
-        text="Talabalar va IT mutaxassislari uchun ishonchli, premium va natijaga yo‘naltirilgan o‘quv tajribasi."
+        text="Talabalar va IT mutaxassislari uchun ishonchli, premium va natijaga yo'naltirilgan o'quv tajribasi."
       />
       <div className="advantage-grid">
         {advantages.map(({ title, Icon }) => (

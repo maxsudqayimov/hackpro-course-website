@@ -1,19 +1,21 @@
+import { telegramRegisterUrl } from '../data/siteData.js';
+
 export default function Hero() {
   return (
     <section className="hero section-shell" id="home">
       <div className="hero-copy">
         <span className="eyebrow">Professional technology academy</span>
-        <h1>Kelajak texnologiyalarini HackPro bilan o‘rganing</h1>
+        <h1>Kelajak texnologiyalarini HackPro bilan o'rganing</h1>
         <p>
-          Kiberxavfsizlik, IoT va sun’iy intellekt bo‘yicha amaliy kurslar:
-          real loyihalar, mentor yordami va IT karyera uchun aniq yo‘l xaritasi.
+          Kiberxavfsizlik, IoT va sun'iy intellekt bo'yicha amaliy kurslar: real loyihalar,
+          mentor yordami va IT karyera uchun aniq yo'l xaritasi.
         </p>
         <div className="hero-actions">
           <a className="button primary" href="#courses">
-            Kurslarni ko‘rish
+            Kurslarni ko'rish
           </a>
-          <a className="button secondary" href="#contact">
-            Bog‘lanish
+          <a className="button secondary" href={telegramRegisterUrl} target="_blank" rel="noreferrer">
+            Telegram bot
           </a>
         </div>
         <div className="trust-row" aria-label="Platforma afzalliklari">
@@ -23,7 +25,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-visual" aria-label="HackPro texnologiya platformasi ko‘rinishi">
+      <div className="hero-visual" aria-label="HackPro texnologiya platformasi ko'rinishi">
         <div className="visual-grid" />
         <div className="dashboard-panel panel-main">
           <div className="panel-header">

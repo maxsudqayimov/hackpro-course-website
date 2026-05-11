@@ -90,3 +90,52 @@ export function CodeIcon() {
     </svg>
   );
 }
+
+export function HomeIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="m3 11 9-8 9 8" />
+      <path d="M5 10v10h14V10" />
+      <path d="M10 20v-6h4v6" />
+    </svg>
+  );
+}
+
+export function BookIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" />
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20" />
+    </svg>
+  );
+}
+
+export function InfoIcon() {
+  return (
+    <svg {...iconProps}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 10v6" />
+      <path d="M12 7h.01" />
+    </svg>
+  );
+}
+
+export function PhoneIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" />
+    </svg>
+  );
+}
+
+export function BotIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect x="5" y="7" width="14" height="12" rx="3" />
+      <path d="M12 7V3" />
+      <path d="M8.5 12h.01M15.5 12h.01" />
+      <path d="M9 16h6" />
+      <path d="M3 13h2M19 13h2" />
+    </svg>
+  );
+}

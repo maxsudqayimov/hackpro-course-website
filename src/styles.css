@@ -29,6 +29,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   color: var(--text);
   background:
     radial-gradient(circle at 20% 10%, rgba(52, 245, 255, 0.14), transparent 30%),
@@ -69,7 +70,7 @@ textarea {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 60;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,37 +84,82 @@ textarea {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   font-size: 1.12rem;
   font-weight: 800;
   letter-spacing: 0;
 }
 
-.brand-mark {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
+.brand-logo {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(52, 245, 255, 0.46);
-  border-radius: var(--radius);
-  color: #00131a;
-  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.9), transparent 16%),
+    linear-gradient(135deg, var(--cyan), var(--blue));
   box-shadow: 0 0 26px rgba(52, 245, 255, 0.28);
+}
+
+.brand-logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.logo-shield {
+  fill: rgba(2, 16, 24, 0.9);
+}
+
+.logo-cut,
+.logo-node {
+  fill: none;
+  stroke: #ecfeff;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logo-node {
+  stroke-width: 2.2;
+}
+
+.logo-dot {
+  fill: var(--cyan);
+}
+
+.brand-word {
+  color: var(--text);
+  font-weight: 950;
+  letter-spacing: 0.01em;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 13px;
   color: var(--muted);
   font-size: 0.94rem;
   font-weight: 650;
 }
 
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   transition:
     color 180ms ease,
     transform 180ms ease;
+}
+
+.nav-links svg {
+  width: 17px;
+  height: 17px;
+  color: var(--cyan);
+  flex: 0 0 auto;
 }
 
 .nav-links a:hover {
@@ -139,10 +185,25 @@ textarea {
 }
 
 .nav-cta {
+  gap: 8px;
   padding: 0 18px;
   color: var(--text);
   background: rgba(52, 245, 255, 0.1);
   border-color: rgba(52, 245, 255, 0.28);
+  white-space: nowrap;
+}
+
+.nav-cta-icon,
+.nav-cta-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-cta-icon svg {
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .button {
@@ -187,11 +248,16 @@ textarea {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
-  gap: 58px;
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.72fr);
+  gap: 76px;
   align-items: center;
   min-height: calc(100vh - 74px);
   padding: 58px 0 72px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-copy h1,
@@ -251,6 +317,8 @@ textarea {
 
 .hero-visual {
   position: relative;
+  z-index: 1;
+  transform: translateX(28px);
   min-height: 530px;
   overflow: hidden;
   border: 1px solid rgba(52, 245, 255, 0.2);
@@ -464,8 +532,15 @@ textarea {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
 .course-card,
 .advantage-card,
+.system-card,
 .contact-form {
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: var(--radius);
@@ -475,6 +550,8 @@ textarea {
 }
 
 .course-card {
+  display: grid;
+  gap: 18px;
   min-height: 320px;
   padding: 28px;
   transition:
@@ -493,6 +570,7 @@ textarea {
   display: grid;
   width: 60px;
   height: 60px;
+  flex: 0 0 auto;
   place-items: center;
   border-radius: var(--radius);
   color: var(--cyan);
@@ -514,6 +592,16 @@ textarea {
   text-transform: uppercase;
 }
 
+.course-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.course-card-heading span {
+  margin-top: 0;
+}
+
 .course-card h3,
 .advantage-card h3 {
   margin: 12px 0;
@@ -521,8 +609,374 @@ textarea {
 }
 
 .course-card p {
+  margin: 0;
   color: var(--muted);
   line-height: 1.68;
+}
+
+.course-more {
+  align-self: end;
+  color: #d8f7ff;
+  font-size: 0.9rem;
+}
+
+.course-detail-page {
+  min-height: 70vh;
+}
+
+.course-detail-hero {
+  padding: 58px 0 72px;
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: 28px;
+  color: var(--cyan);
+  font-weight: 900;
+}
+
+.course-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.44fr);
+  gap: 38px;
+  align-items: stretch;
+}
+
+.course-detail-copy,
+.course-detail-panel,
+.course-detail-content article {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(15, 29, 53, 0.78), rgba(6, 13, 25, 0.86));
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+}
+
+.course-detail-copy {
+  padding: clamp(28px, 5vw, 52px);
+}
+
+.course-detail-copy h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.03;
+}
+
+.course-detail-copy p {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.course-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.course-detail-panel {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  padding: 28px;
+}
+
+.course-detail-icon {
+  display: grid;
+  width: 82px;
+  height: 82px;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--cyan);
+  background: rgba(52, 245, 255, 0.09);
+}
+
+.course-detail-icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+.course-detail-panel dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.course-detail-panel div {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.course-detail-panel dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.course-detail-panel dd {
+  margin: 6px 0 0;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 850;
+}
+
+.course-detail-content {
+  display: grid;
+  gap: 22px;
+  padding-bottom: 96px;
+}
+
+.course-detail-content article {
+  padding: 28px;
+}
+
+.course-detail-content h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.55rem, 3vw, 2.3rem);
+}
+
+.detail-chip-grid,
+.detail-project-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-chip-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.detail-chip-grid span,
+.detail-project-grid div {
+  border: 1px solid rgba(52, 245, 255, 0.16);
+  border-radius: var(--radius);
+  background: rgba(52, 245, 255, 0.07);
+}
+
+.detail-chip-grid span {
+  padding: 14px;
+  color: #d8f7ff;
+  font-weight: 850;
+}
+
+.detail-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.detail-list li {
+  padding: 14px 14px 14px 42px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+
+.detail-list li::before {
+  position: absolute;
+  left: 15px;
+  color: var(--cyan);
+  content: "+";
+}
+
+.detail-project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.detail-project-grid div {
+  padding: 18px;
+}
+
+.detail-project-grid strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.04rem;
+}
+
+.detail-project-grid p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.system-card {
+  display: grid;
+  gap: 18px;
+  min-height: 270px;
+  padding: 28px;
+}
+
+.system-card-top {
+  display: grid;
+  gap: 16px;
+}
+
+.system-card h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.system-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.system-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-self: end;
+}
+
+.system-tags span {
+  padding: 9px 10px;
+  border: 1px solid rgba(52, 245, 255, 0.16);
+  border-radius: var(--radius);
+  color: #d8f7ff;
+  background: rgba(52, 245, 255, 0.07);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.bot-connect {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0;
+  border-block: 1px solid rgba(52, 245, 255, 0.14);
+  background:
+    linear-gradient(135deg, rgba(52, 245, 255, 0.16), rgba(168, 85, 247, 0.12)),
+    radial-gradient(circle at 18% 18%, rgba(52, 245, 255, 0.28), transparent 24%),
+    radial-gradient(circle at 84% 28%, rgba(91, 140, 255, 0.22), transparent 30%),
+    #030712;
+}
+
+.bot-connect::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.85), transparent 76%);
+}
+
+.bot-connect-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.74fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.bot-connect-copy h2 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1.03;
+}
+
+.bot-connect-copy p {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: #d6e6ff;
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.bot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.bot-phone {
+  min-height: 430px;
+  padding: 18px;
+  border: 1px solid rgba(52, 245, 255, 0.3);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(7, 17, 31, 0.98), rgba(3, 7, 18, 0.98)),
+    rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow);
+}
+
+.bot-phone-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 18px;
+  color: #d9faff;
+}
+
+.bot-phone-header span {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+}
+
+.bot-chat {
+  display: grid;
+  gap: 18px;
+  min-height: 330px;
+  padding: 18px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 0 0, rgba(52, 245, 255, 0.16), transparent 36%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.bot-message {
+  align-self: start;
+  max-width: 300px;
+  padding: 14px 15px;
+  border-radius: 8px;
+  color: #e8faff;
+  background: rgba(52, 245, 255, 0.12);
+}
+
+.bot-menu-preview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-self: end;
+}
+
+.bot-menu-preview span {
+  min-height: 44px;
+  padding: 12px;
+  border: 1px solid rgba(52, 245, 255, 0.18);
+  border-radius: var(--radius);
+  color: #e8faff;
+  background: rgba(3, 10, 24, 0.76);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.bot-menu-preview b {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+  border-radius: 50%;
+  color: #021018;
+  background: var(--cyan);
+  font-size: 0.72rem;
 }
 
 .about-section,
@@ -697,6 +1151,179 @@ textarea {
   font-size: 0.9rem;
 }
 
+.ai-chat {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 40;
+  display: grid;
+  justify-items: end;
+  gap: 14px;
+}
+
+.ai-chat-panel {
+  width: min(390px, calc(100vw - 32px));
+  overflow: hidden;
+  border: 1px solid rgba(52, 245, 255, 0.26);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 0, rgba(52, 245, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(7, 17, 31, 0.98), rgba(2, 7, 18, 0.98));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+}
+
+.ai-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.ai-chat-header div {
+  display: grid;
+  gap: 3px;
+}
+
+.ai-chat-header span {
+  font-weight: 950;
+}
+
+.ai-chat-header small {
+  color: var(--muted);
+}
+
+.ai-chat-header button,
+.ai-chat-toggle,
+.ai-quick-prompts button,
+.ai-chat-form button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.ai-chat-header button {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.3rem;
+}
+
+.ai-chat-messages {
+  display: grid;
+  gap: 12px;
+  max-height: 320px;
+  overflow: auto;
+  padding: 16px;
+}
+
+.ai-message {
+  max-width: 88%;
+  padding: 12px 13px;
+  border-radius: 12px;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.ai-message.assistant {
+  justify-self: start;
+  color: #e8faff;
+  background: rgba(52, 245, 255, 0.11);
+}
+
+.ai-message.user {
+  justify-self: end;
+  color: #021018;
+  background: linear-gradient(135deg, var(--cyan), #75a7ff);
+  font-weight: 750;
+}
+
+.ai-quick-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 14px;
+}
+
+.ai-quick-prompts button {
+  padding: 8px 10px;
+  border: 1px solid rgba(52, 245, 255, 0.17);
+  border-radius: var(--radius);
+  color: #d8f7ff;
+  background: rgba(255, 255, 255, 0.055);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.ai-chat-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 0 16px 14px;
+}
+
+.ai-chat-form input {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: rgba(2, 8, 20, 0.72);
+  outline: none;
+  padding: 12px;
+}
+
+.ai-chat-form input:focus {
+  border-color: rgba(52, 245, 255, 0.58);
+  box-shadow: 0 0 0 4px rgba(52, 245, 255, 0.08);
+}
+
+.ai-chat-form button,
+.ai-chat-link {
+  border-radius: var(--radius);
+  color: #021018;
+  background: linear-gradient(135deg, var(--cyan), #75a7ff);
+  font-weight: 900;
+}
+
+.ai-chat-form button {
+  padding: 0 14px;
+}
+
+.ai-chat-link {
+  display: flex;
+  justify-content: center;
+  margin: 0 16px 16px;
+  padding: 12px;
+  text-align: center;
+}
+
+.ai-chat-toggle {
+  display: grid;
+  width: 74px;
+  height: 74px;
+  place-items: center;
+  border: 1px solid rgba(52, 245, 255, 0.36);
+  border-radius: 50%;
+  color: #021018;
+  background:
+    radial-gradient(circle at 30% 20%, #ffffff, transparent 18%),
+    linear-gradient(135deg, var(--cyan), var(--blue));
+  box-shadow: 0 18px 46px rgba(52, 245, 255, 0.28);
+}
+
+.ai-chat-toggle span {
+  font-size: 1.05rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.ai-chat-toggle strong {
+  margin-top: -18px;
+  font-size: 0.73rem;
+}
+
 @keyframes rise {
   0%,
   100% {
@@ -716,10 +1343,52 @@ textarea {
   }
 }
 
+@media (max-width: 1100px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 68px;
+    right: 0;
+    left: 0;
+    display: grid;
+    gap: 10px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background: rgba(4, 12, 27, 0.97);
+    opacity: 0;
+    transition:
+      max-height 220ms ease,
+      opacity 220ms ease,
+      padding 220ms ease;
+  }
+
+  .nav-links.open {
+    max-height: 620px;
+    padding: 16px;
+    border-color: rgba(255, 255, 255, 0.12);
+    opacity: 1;
+  }
+
+  .nav-links a,
+  .nav-cta {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px;
+  }
+}
+
 @media (max-width: 960px) {
   .hero,
   .about-grid,
-  .contact-grid {
+  .contact-grid,
+  .bot-connect-grid,
+  .course-detail-grid {
     grid-template-columns: 1fr;
   }
 
@@ -729,10 +1398,12 @@ textarea {
   }
 
   .hero-visual {
+    transform: none;
     min-height: 470px;
   }
 
   .course-grid,
+  .systems-grid,
   .advantage-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -752,6 +1423,11 @@ textarea {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .detail-chip-grid,
+  .detail-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -762,6 +1438,25 @@ textarea {
 
   .navbar {
     min-height: 68px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .brand-logo svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .brand-word {
+    font-size: 1rem;
   }
 
   .menu-toggle {
@@ -789,7 +1484,7 @@ textarea {
   }
 
   .nav-links.open {
-    max-height: 420px;
+    max-height: 620px;
     padding: 16px;
     border-color: rgba(255, 255, 255, 0.12);
     opacity: 1;
@@ -799,16 +1494,27 @@ textarea {
     padding: 12px;
   }
 
+  .nav-links svg {
+    width: 18px;
+    height: 18px;
+  }
+
   .hero {
-    padding-top: 42px;
+    gap: 30px;
+    padding-top: 34px;
+    padding-bottom: 48px;
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.2rem, 13vw, 3.8rem);
+    max-width: 100%;
+    font-size: clamp(2.05rem, 11.6vw, 3.45rem);
+    line-height: 1.04;
   }
 
   .hero-copy p {
+    margin-top: 18px;
     font-size: 1rem;
+    line-height: 1.65;
   }
 
   .button {
@@ -816,24 +1522,35 @@ textarea {
   }
 
   .hero-visual {
-    min-height: 420px;
+    min-height: 360px;
     border-radius: 18px;
   }
 
   .panel-main {
-    top: 42px;
-    right: 18px;
-    left: 18px;
+    top: 28px;
+    right: 14px;
+    left: 14px;
+    padding: 14px;
+  }
+
+  .terminal-line {
+    padding: 10px 11px;
+    font-size: 0.74rem;
+  }
+
+  .metric-wave {
+    height: 64px;
+    margin-top: 16px;
   }
 
   .panel-ai {
-    left: 18px;
-    bottom: 60px;
+    left: 14px;
+    bottom: 48px;
   }
 
   .panel-iot {
-    right: 18px;
-    bottom: 28px;
+    right: 14px;
+    bottom: 22px;
   }
 
   .orbit-one {
@@ -842,6 +1559,7 @@ textarea {
   }
 
   .course-grid,
+  .systems-grid,
   .advantage-grid,
   .stats-grid,
   .footer-grid {
@@ -849,9 +1567,98 @@ textarea {
   }
 
   .content-section,
+  .bot-connect,
   .about-section,
   .contact-section {
-    padding: 74px 0;
+    padding: 66px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
+  }
+
+  .section-heading h2,
+  .about-grid h2,
+  .contact-copy h2,
+  .bot-connect-copy h2 {
+    font-size: clamp(1.85rem, 9vw, 2.75rem);
+    line-height: 1.08;
+  }
+
+  .course-card,
+  .system-card,
+  .advantage-card,
+  .contact-form,
+  .course-detail-panel,
+  .course-detail-content article {
+    padding: 22px;
+  }
+
+  .course-card {
+    min-height: auto;
+  }
+
+  .course-card-heading {
+    align-items: flex-start;
+  }
+
+  .course-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .course-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .course-card h3,
+  .advantage-card h3,
+  .system-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.24;
+  }
+
+  .bot-phone {
+    min-height: 360px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .bot-chat {
+    min-height: 270px;
+    padding: 14px;
+  }
+
+  .contact-details a,
+  .contact-details span {
+    overflow-wrap: anywhere;
+  }
+
+  .course-detail-hero {
+    padding: 36px 0 48px;
+  }
+
+  .course-detail-copy h1 {
+    font-size: clamp(2.1rem, 11vw, 3.35rem);
+  }
+
+  .course-detail-copy p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .course-detail-actions {
+    display: grid;
+  }
+
+  .course-detail-content {
+    padding-bottom: 70px;
+  }
+
+  .detail-chip-grid,
+  .detail-project-grid {
+    grid-template-columns: 1fr;
   }
 
   .stat-item,
@@ -867,17 +1674,66 @@ textarea {
 }
 
 @media (max-width: 460px) {
+  .section-shell,
+  .navbar {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .navbar {
+    min-height: 64px;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-links {
+    top: 64px;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-word {
+    font-size: 0.98rem;
+  }
+
   .hero-actions,
   .trust-row {
     display: grid;
   }
 
+  .hero {
+    padding-top: 28px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.98rem, 12.8vw, 3rem);
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+  }
+
+  .trust-row {
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .trust-row span {
+    padding: 9px 10px;
+  }
+
   .hero-visual {
-    min-height: 390px;
+    min-height: 330px;
   }
 
   .panel-card {
-    min-width: 132px;
+    min-width: 118px;
     padding: 14px;
   }
 
@@ -885,11 +1741,115 @@ textarea {
     font-size: 1.6rem;
   }
 
+  .panel-ai {
+    bottom: 50px;
+  }
+
+  .panel-iot {
+    bottom: 18px;
+  }
+
   .terminal-line {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+  }
+
+  .orbit-one {
+    width: 132px;
+    height: 132px;
+    right: 34px;
+    top: 172px;
+  }
+
+  .orbit-two {
+    width: 72px;
+    height: 72px;
+    right: 64px;
+    top: 202px;
+  }
+
+  .course-card-heading {
+    gap: 12px;
+  }
+
+  .course-card,
+  .system-card,
+  .advantage-card,
+  .course-detail-content article {
+    padding: 18px;
+  }
+
+  .course-detail-copy {
+    padding: 24px;
+  }
+
+  .course-detail-panel {
+    padding: 18px;
+  }
+
+  .back-link {
+    margin-bottom: 20px;
   }
 
   .contact-form {
     padding: 20px;
+  }
+
+  .bot-connect-copy p {
+    font-size: 0.98rem;
+  }
+
+  .bot-phone {
+    min-height: 320px;
+  }
+
+  .bot-menu-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-chat {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .ai-chat-panel {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 104px);
+    overflow: auto;
+  }
+
+  .ai-chat-messages {
+    max-height: 34dvh;
+    padding: 14px;
+  }
+
+  .ai-quick-prompts {
+    padding: 0 14px 12px;
+  }
+
+  .ai-chat-form {
+    grid-template-columns: 1fr;
+    padding: 0 14px 12px;
+  }
+
+  .ai-chat-form button {
+    min-height: 42px;
+  }
+
+  .ai-chat-link {
+    margin: 0 14px 14px;
+  }
+
+  .ai-chat-toggle {
+    width: 62px;
+    height: 62px;
+  }
+
+  .ai-chat-toggle span {
+    font-size: 0.95rem;
+  }
+
+  .ai-chat-toggle strong {
+    margin-top: -14px;
+    font-size: 0.68rem;
   }
 }
