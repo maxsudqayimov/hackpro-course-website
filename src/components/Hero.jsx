@@ -1,31 +1,30 @@
 import { telegramRegisterUrl } from '../data/siteData.js';
 
-export default function Hero() {
+export default function Hero({ content }) {
+  const { hero } = content;
+
   return (
     <section className="hero section-shell" id="home">
       <div className="hero-copy">
-        <span className="eyebrow">Professional technology academy</span>
-        <h1>Kelajak texnologiyalarini HackPro bilan o'rganing</h1>
-        <p>
-          Kiberxavfsizlik, IoT va sun'iy intellekt bo'yicha amaliy kurslar: real loyihalar,
-          mentor yordami va IT karyera uchun aniq yo'l xaritasi.
-        </p>
+        <span className="eyebrow">{hero.eyebrow}</span>
+        <h1>{hero.title}</h1>
+        <p>{hero.text}</p>
         <div className="hero-actions">
           <a className="button primary" href="#courses">
-            Kurslarni ko'rish
+            {hero.primary}
           </a>
           <a className="button secondary" href={telegramRegisterUrl} target="_blank" rel="noreferrer">
-            Telegram bot
+            {hero.secondary}
           </a>
         </div>
-        <div className="trust-row" aria-label="Platforma afzalliklari">
-          <span>Ethical cybersecurity</span>
-          <span>Real IoT labs</span>
-          <span>AI project studio</span>
+        <div className="trust-row" aria-label={hero.trustAria}>
+          {hero.trust.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </div>
       </div>
 
-      <div className="hero-visual" aria-label="HackPro texnologiya platformasi ko'rinishi">
+      <div className="hero-visual" aria-label={hero.visualAria}>
         <div className="visual-grid" />
         <div className="dashboard-panel panel-main">
           <div className="panel-header">
@@ -47,14 +46,14 @@ export default function Hero() {
           </div>
         </div>
         <div className="dashboard-panel panel-card panel-iot">
-          <span className="panel-label">IoT Nodes</span>
+          <span className="panel-label">{hero.iotLabel}</span>
           <strong>128</strong>
-          <small>connected devices</small>
+          <small>{hero.iotText}</small>
         </div>
         <div className="dashboard-panel panel-card panel-ai">
-          <span className="panel-label">AI Studio</span>
+          <span className="panel-label">{hero.aiLabel}</span>
           <strong>94%</strong>
-          <small>model accuracy lab</small>
+          <small>{hero.aiText}</small>
         </div>
         <div className="orbit orbit-one" />
         <div className="orbit orbit-two" />

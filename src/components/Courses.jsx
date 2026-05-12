@@ -1,17 +1,21 @@
 import SectionHeading from './SectionHeading.jsx';
-import { courses } from '../data/siteData.js';
 
-export default function Courses() {
+export default function Courses({ content }) {
   return (
     <section className="section-shell content-section" id="courses">
       <SectionHeading
-        eyebrow="Courses"
-        title="Beshta kuchli texnologiya yo'nalishi"
-        text="HackPro kurslari xavfsiz, qonuniy va kasbiy amaliyotga tayangan holda tuzilgan."
+        eyebrow={content.coursesSection.eyebrow}
+        title={content.coursesSection.title}
+        text={content.coursesSection.text}
       />
       <div className="course-grid">
-        {courses.map(({ id, title, tag, description, Icon }) => (
-          <a className="course-card" href={`#course/${id}`} key={title} aria-label={`${title} kursi haqida batafsil`}>
+        {content.courses.map(({ id, title, tag, description, Icon }) => (
+          <a
+            className="course-card"
+            href={`#course/${id}`}
+            key={id}
+            aria-label={`${title} ${content.coursesSection.ariaSuffix}`}
+          >
             <div className="course-card-heading">
               <div className="course-icon">
                 <Icon />
@@ -22,7 +26,7 @@ export default function Courses() {
               </div>
             </div>
             <p>{description}</p>
-            <strong className="course-more">Batafsil ko'rish</strong>
+            <strong className="course-more">{content.coursesSection.more}</strong>
           </a>
         ))}
       </div>

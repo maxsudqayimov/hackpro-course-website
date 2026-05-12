@@ -1,13 +1,14 @@
 import { telegramRegisterUrl } from '../data/siteData.js';
 
-export default function CourseDetail({ course }) {
+export default function CourseDetail({ course, content }) {
   const { Icon } = course;
+  const labels = content.courseDetail;
 
   return (
     <main className="course-detail-page">
       <section className="section-shell course-detail-hero">
         <a className="back-link" href="#courses">
-          Kurslarga qaytish
+          {labels.back}
         </a>
 
         <div className="course-detail-grid">
@@ -17,10 +18,10 @@ export default function CourseDetail({ course }) {
             <p>{course.description}</p>
             <div className="course-detail-actions">
               <a className="button primary" href={telegramRegisterUrl} target="_blank" rel="noreferrer">
-                Shu kursga yozilish
+                {labels.register}
               </a>
               <a className="button secondary" href="#courses">
-                Boshqa kurslar
+                {labels.otherCourses}
               </a>
             </div>
           </div>
@@ -31,16 +32,16 @@ export default function CourseDetail({ course }) {
             </div>
             <dl>
               <div>
-                <dt>Muddat</dt>
+                <dt>{labels.duration}</dt>
                 <dd>{course.duration}</dd>
               </div>
               <div>
-                <dt>Format</dt>
+                <dt>{labels.format}</dt>
                 <dd>{course.format}</dd>
               </div>
               <div>
-                <dt>Natija</dt>
-                <dd>Amaliy loyiha va portfolio</dd>
+                <dt>{labels.result}</dt>
+                <dd>{labels.resultText}</dd>
               </div>
             </dl>
           </aside>
@@ -49,7 +50,7 @@ export default function CourseDetail({ course }) {
 
       <section className="section-shell course-detail-content">
         <article>
-          <h2>Nimalar o'rganiladi?</h2>
+          <h2>{labels.modulesTitle}</h2>
           <div className="detail-chip-grid">
             {course.modules.map((item) => (
               <span key={item}>{item}</span>
@@ -58,7 +59,7 @@ export default function CourseDetail({ course }) {
         </article>
 
         <article>
-          <h2>Kurs yakunida</h2>
+          <h2>{labels.outcomesTitle}</h2>
           <ul className="detail-list">
             {course.outcomes.map((item) => (
               <li key={item}>{item}</li>
@@ -67,12 +68,12 @@ export default function CourseDetail({ course }) {
         </article>
 
         <article>
-          <h2>Amaliy loyihalar</h2>
+          <h2>{labels.projectsTitle}</h2>
           <div className="detail-project-grid">
             {course.projects.map((item) => (
               <div key={item}>
                 <strong>{item}</strong>
-                <p>Mentor nazorati ostida bosqichma-bosqich bajariladigan portfolio loyihasi.</p>
+                <p>{labels.projectText}</p>
               </div>
             ))}
           </div>

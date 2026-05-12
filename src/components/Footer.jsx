@@ -1,39 +1,36 @@
-import { navItems, telegramBotUrl, telegramChannelUrl } from '../data/siteData.js';
+import { telegramBotUrl, telegramChannelUrl } from '../data/siteData.js';
 import BrandLogo from './BrandLogo.jsx';
 
-export default function Footer() {
+export default function Footer({ content }) {
   return (
     <footer className="footer">
       <div className="section-shell footer-grid">
         <div>
-          <a className="brand" href="#home" aria-label="HackPro bosh sahifa">
+          <a className="brand" href="#home" aria-label={content.homeAria}>
             <BrandLogo />
             <span className="brand-word">HackPro</span>
           </a>
-          <p>
-            Kiberxavfsizlik, IoT va sun'iy intellekt bo'yicha professional, amaliy va ethical
-            technology ta'lim platformasi.
-          </p>
+          <p>{content.footer.text}</p>
         </div>
         <div className="footer-links">
-          {navItems.map((item) => (
+          {content.navItems.map((item) => (
             <a href={item.href} key={item.label}>
               {item.label}
             </a>
           ))}
         </div>
-        <div className="social-links" aria-label="Ijtimoiy tarmoqlar">
+        <div className="social-links" aria-label={content.footer.socialAria}>
           <a href={telegramBotUrl} target="_blank" rel="noreferrer">
-            Telegram bot
+            {content.footer.bot}
           </a>
           <a href={telegramChannelUrl} target="_blank" rel="noreferrer">
-            Telegram kanal
+            {content.footer.channel}
           </a>
-          <a href="#contact">Manzil</a>
+          <a href="#contact">{content.footer.address}</a>
         </div>
       </div>
       <div className="section-shell footer-bottom">
-        <span>(c) 2026 HackPro. Barcha huquqlar himoyalangan.</span>
+        <span>{content.footer.copyright}</span>
       </div>
     </footer>
   );

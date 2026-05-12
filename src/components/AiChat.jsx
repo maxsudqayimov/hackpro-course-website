@@ -1,107 +1,138 @@
-import { useMemo, useState } from 'react';
-import { courses, modernSystems, telegramRegisterUrl } from '../data/siteData.js';
-
-const quickPrompts = [
-  'Qaysi kursni tanlay?',
-  'Kiberxavfsizlik haqida',
-  "Sun'iy intellekt kursi",
-  'Robototexnika kursi',
-  'Dasturlash kursi',
-  'Kontaktlar',
-];
+import { useEffect, useMemo, useState } from 'react';
+import { telegramRegisterUrl } from '../data/siteData.js';
 
 function normalize(text) {
   return text.toLowerCase().replace(/'/g, '').replace(/`/g, '');
 }
 
 function buildCourseAnswer(course) {
-  return `${course.title}: ${course.description} Bu yo'nalish amaliy topshiriqlar, mentor yordami va portfolio uchun loyiha bilan o'rganiladi.`;
+  return course;
 }
 
-function findCourse(titlePart) {
+function findCourse(courses, titlePart) {
   return courses.find((course) => normalize(course.title).includes(titlePart));
 }
 
-function getAssistantReply(input) {
+function getAssistantReply(input, content) {
   const query = normalize(input);
+  const { aiChat, courses, modernSystems } = content;
 
   if (!query.trim()) {
-    return "Savolingizni yozing. Masalan: qaysi kursni tanlay, AI kursi, kontakt yoki ro'yxatdan o'tish.";
+    return aiChat.empty;
   }
 
-  if (query.includes('kiber') || query.includes('security') || query.includes('xavfsiz')) {
-    return buildCourseAnswer(findCourse('kiber') || courses[0]);
+  if (
+    query.includes('kiber') ||
+    query.includes('cyber') ||
+    query.includes('security') ||
+    query.includes('xavfsiz') ||
+    query.includes('безопас')
+  ) {
+    const course = buildCourseAnswer(findCourse(courses, 'kiber') || findCourse(courses, 'cyber') || courses[0]);
+    return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
   if (query.includes('iot') || query.includes('arduino') || query.includes('esp') || query.includes('sensor')) {
-    return buildCourseAnswer(findCourse('iot') || courses[1]);
+    const course = buildCourseAnswer(findCourse(courses, 'iot') || courses[1]);
+    return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
   if (
     query.includes('ai') ||
     query.includes('suniy') ||
     query.includes('intellekt') ||
+    query.includes('искус') ||
+    query.includes('интел') ||
     query.includes('machine') ||
     query.includes('data')
   ) {
-    return buildCourseAnswer(findCourse('suniy') || courses[2]);
+    const course =
+      buildCourseAnswer(
+        findCourse(courses, 'suniy') ||
+          findCourse(courses, 'intelligence') ||
+          findCourse(courses, 'интел') ||
+          courses[2],
+      );
+    return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
-  if (query.includes('robot') || query.includes('mexatron') || query.includes('motor')) {
-    return buildCourseAnswer(findCourse('robot') || courses[3]);
+  if (query.includes('robot') || query.includes('робот') || query.includes('mexatron') || query.includes('motor')) {
+    const course = buildCourseAnswer(findCourse(courses, 'robot') || findCourse(courses, 'робот') || courses[3]);
+    return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
   if (
     query.includes('dastur') ||
     query.includes('program') ||
+    query.includes('программ') ||
     query.includes('web') ||
     query.includes('javascript') ||
     query.includes('frontend') ||
     query.includes('backend')
   ) {
-    return buildCourseAnswer(findCourse('dastur') || courses[4]);
+    const course =
+      buildCourseAnswer(
+        findCourse(courses, 'dastur') ||
+          findCourse(courses, 'program') ||
+          findCourse(courses, 'программ') ||
+          courses[4],
+      );
+    return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
-  if (query.includes('tizim') || query.includes('crm') || query.includes('bot') || query.includes('laborator')) {
-    return `HackPro zamonaviy tizimlari: ${modernSystems
+  if (
+    query.includes('tizim') ||
+    query.includes('system') ||
+    query.includes('систем') ||
+    query.includes('crm') ||
+    query.includes('bot') ||
+    query.includes('laborator')
+  ) {
+    return `${aiChat.systemsPrefix}: ${modernSystems
       .map((system) => system.title)
-      .join(', ')}. Bu tizimlar o'quv jarayonini sayt, Telegram bot va amaliy laboratoriyalar bilan bog'laydi.`;
+      .join(', ')}. ${aiChat.systemsSuffix}`;
   }
 
-  if (query.includes('narx') || query.includes('tolov') || query.includes('pul')) {
-    return "Narxlar kurs formati va guruhga qarab belgilanadi. Eng aniq ma'lumot uchun Telegram bot orqali ro'yxatdan o'ting, admin siz bilan bog'lanadi.";
+  if (query.includes('narx') || query.includes('tolov') || query.includes('pul') || query.includes('price') || query.includes('cost') || query.includes('цена') || query.includes('стоим')) {
+    return aiChat.price;
   }
 
-  if (query.includes('kontakt') || query.includes('telefon') || query.includes('manzil') || query.includes('qayer')) {
-    return "Kontakt: +998 93 434 01 09. Manzil: Zarafshon shahri, Kelajak markazi. Telegram bot orqali ham ariza qoldirishingiz mumkin.";
+  if (query.includes('kontakt') || query.includes('contact') || query.includes('контакт') || query.includes('telefon') || query.includes('phone') || query.includes('manzil') || query.includes('address') || query.includes('qayer')) {
+    return aiChat.contact;
   }
 
-  if (query.includes('yozil') || query.includes('royxat') || query.includes('start') || query.includes('oqish')) {
-    return "Ro'yxatdan o'tish uchun pastdagi Telegram tugmasini bosing. Bot ismingiz, telefon raqamingiz, kurs va o'qish formatini so'raydi.";
+  if (query.includes('yozil') || query.includes('royxat') || query.includes('register') || query.includes('запис') || query.includes('start') || query.includes('oqish')) {
+    return aiChat.register;
   }
 
-  if (query.includes('qaysi') || query.includes('tanla') || query.includes('maslahat')) {
-    return "Agar xavfsizlik va tarmoq sizga qiziq bo'lsa Kiberxavfsizlikni, qurilmalar va sensorlar yoqsa IoT yoki Robototexnikani, data va avtomatlashtirish qiziqtirsa Sun'iy intellektni, sayt va ilova yaratish yoqsa Dasturlashni tanlang.";
+  if (query.includes('qaysi') || query.includes('which') || query.includes('choose') || query.includes('какой') || query.includes('tanla') || query.includes('maslahat')) {
+    return aiChat.advice;
   }
 
-  return "Men HackPro kurslari, zamonaviy tizimlar, kontaktlar va ro'yxatdan o'tish bo'yicha yordam beraman. Savolingizni biroz aniqroq yozing yoki tezkor tugmalardan birini tanlang.";
+  return aiChat.fallback;
 }
 
-export default function AiChat() {
+export default function AiChat({ content }) {
+  const { aiChat } = content;
   const initialMessages = useMemo(
     () => [
       {
         id: 'welcome',
         role: 'assistant',
-        text: "Salom! Men HackPro AI yordamchisiman. Kurs tanlash, ro'yxatdan o'tish yoki kontaktlar bo'yicha savol bering.",
+        text: aiChat.welcome,
       },
     ],
-    [],
+    [aiChat.welcome],
   );
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState('');
+
+  useEffect(() => {
+    setMessages(initialMessages);
+    setInput('');
+  }, [initialMessages]);
 
   const sendMessage = (text) => {
     const trimmed = text.trim();
@@ -117,7 +148,7 @@ export default function AiChat() {
     const assistantMessage = {
       id: `assistant-${Date.now()}`,
       role: 'assistant',
-      text: getAssistantReply(trimmed),
+      text: getAssistantReply(trimmed, content),
     };
 
     setMessages((current) => [...current, userMessage, assistantMessage]);
@@ -133,13 +164,13 @@ export default function AiChat() {
   return (
     <div className={isOpen ? 'ai-chat open' : 'ai-chat'}>
       {isOpen ? (
-        <section className="ai-chat-panel" aria-label="HackPro AI chat">
+        <section className="ai-chat-panel" aria-label={aiChat.aria}>
           <div className="ai-chat-header">
             <div>
-              <span>HackPro AI</span>
-              <small>Online yordamchi</small>
+              <span>{aiChat.title}</span>
+              <small>{aiChat.subtitle}</small>
             </div>
-            <button type="button" aria-label="Chatni yopish" onClick={() => setIsOpen(false)}>
+            <button type="button" aria-label={aiChat.close} onClick={() => setIsOpen(false)}>
               X
             </button>
           </div>
@@ -153,7 +184,7 @@ export default function AiChat() {
           </div>
 
           <div className="ai-quick-prompts">
-            {quickPrompts.map((prompt) => (
+            {aiChat.prompts.map((prompt) => (
               <button type="button" key={prompt} onClick={() => sendMessage(prompt)}>
                 {prompt}
               </button>
@@ -165,16 +196,16 @@ export default function AiChat() {
               type="text"
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="Savolingizni yozing"
-              aria-label="AI chat savoli"
+              placeholder={aiChat.input}
+              aria-label={aiChat.inputAria}
             />
-            <button type="submit" aria-label="AI chatga yuborish">
-              Yuborish
+            <button type="submit" aria-label={aiChat.sendAria}>
+              {aiChat.send}
             </button>
           </form>
 
           <a className="ai-chat-link" href={telegramRegisterUrl} target="_blank" rel="noreferrer">
-            Telegram bot orqali ro'yxatdan o'tish
+            {aiChat.link}
           </a>
         </section>
       ) : null}
@@ -182,11 +213,11 @@ export default function AiChat() {
       <button
         className="ai-chat-toggle"
         type="button"
-        aria-label="AI chatni ochish"
+        aria-label={aiChat.openAria}
         onClick={() => setIsOpen((value) => !value)}
       >
-        <span>AI</span>
-        <strong>Chat</strong>
+        <span>{aiChat.toggleTop}</span>
+        <strong>{aiChat.toggleBottom}</strong>
       </button>
     </div>
   );

@@ -1,16 +1,15 @@
 import SectionHeading from './SectionHeading.jsx';
-import { advantages } from '../data/siteData.js';
 
-export default function Advantages() {
+export default function Advantages({ content }) {
   return (
     <section className="section-shell content-section" id="advantages">
       <SectionHeading
-        eyebrow="Advantages"
-        title="Nima uchun HackPro?"
-        text="Talabalar va IT mutaxassislari uchun ishonchli, premium va natijaga yo'naltirilgan o'quv tajribasi."
+        eyebrow={content.advantagesSection.eyebrow}
+        title={content.advantagesSection.title}
+        text={content.advantagesSection.text}
       />
       <div className="advantage-grid">
-        {advantages.map(({ title, Icon }) => (
+        {content.advantages.map(({ title, Icon }) => (
           <article className="advantage-card" key={title}>
             <Icon />
             <h3>{title}</h3>

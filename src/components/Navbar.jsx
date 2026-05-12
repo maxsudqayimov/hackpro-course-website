@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { navItems, telegramRegisterUrl } from '../data/siteData.js';
+import { languages, telegramRegisterUrl } from '../data/siteData.js';
 import BrandLogo from './BrandLogo.jsx';
 
-export default function Navbar() {
+export default function Navbar({ content, language, onLanguageChange }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeMenu = () => setIsOpen(false);
 
   return (
     <header className="navbar">
-      <a className="brand" href="#home" onClick={closeMenu} aria-label="HackPro bosh sahifa">
+      <a className="brand" href="#home" onClick={closeMenu} aria-label={content.homeAria}>
         <BrandLogo />
         <span className="brand-word">HackPro</span>
       </a>
@@ -17,7 +17,7 @@ export default function Navbar() {
       <button
         className="menu-toggle"
         type="button"
-        aria-label="Menyuni ochish"
+        aria-label={content.menuToggle}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((value) => !value)}
       >
@@ -25,8 +25,8 @@ export default function Navbar() {
         <span />
       </button>
 
-      <nav className={isOpen ? 'nav-links open' : 'nav-links'} aria-label="Asosiy menyu">
-        {navItems.map(({ href, label, Icon }) => (
+      <nav className={isOpen ? 'nav-links open' : 'nav-links'} aria-label={content.navAria}>
+        {content.navItems.map(({ href, label, Icon }) => (
           <a href={href} key={label} onClick={closeMenu}>
             <Icon />
             <span>{label}</span>
@@ -45,8 +45,24 @@ export default function Navbar() {
               <path d="m10 13 4-4" />
             </svg>
           </span>
-          Bot orqali yozilish
+          {content.navCta}
         </a>
+        <div className="language-switcher" aria-label="Language selector">
+          {languages.map((item) => (
+            <button
+              className={language === item.code ? 'active' : ''}
+              type="button"
+              key={item.code}
+              aria-label={item.name}
+              onClick={() => {
+                onLanguageChange(item.code);
+                closeMenu();
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
       </nav>
     </header>
   );

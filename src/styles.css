@@ -167,6 +167,37 @@ textarea {
   transform: translateY(-1px);
 }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.language-switcher button {
+  min-width: 38px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 900;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.language-switcher button:hover,
+.language-switcher button.active {
+  color: #021018;
+  background: var(--cyan);
+}
+
 .nav-cta,
 .button {
   display: inline-flex;
@@ -1376,10 +1407,23 @@ textarea {
   }
 
   .nav-links a,
-  .nav-cta {
+  .nav-cta,
+  .language-switcher {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .nav-links a,
+  .nav-cta {
     padding: 12px;
+  }
+
+  .language-switcher {
+    justify-content: space-between;
+  }
+
+  .language-switcher button {
+    flex: 1;
   }
 }
 

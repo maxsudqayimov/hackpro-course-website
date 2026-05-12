@@ -1,38 +1,38 @@
 import { telegramBotUrl, telegramRegisterUrl } from '../data/siteData.js';
 
-export default function BotConnect() {
+export default function BotConnect({ content }) {
+  const { bot } = content;
+
   return (
     <section className="bot-connect" id="telegram-bot">
       <div className="section-shell bot-connect-grid">
         <div className="bot-connect-copy">
-          <span className="eyebrow">Telegram bot</span>
-          <h2>Saytdan botga bir bosishda o'ting</h2>
-          <p>
-            HackPro botida kurslarni tanlash, zamonaviy tizimlar bilan tanishish, savol-javoblarni
-            ko'rish va ro'yxatdan o'tish bir joyda jamlangan.
-          </p>
+          <span className="eyebrow">{bot.eyebrow}</span>
+          <h2>{bot.title}</h2>
+          <p>{bot.text}</p>
           <div className="bot-actions">
             <a className="button primary" href={telegramRegisterUrl} target="_blank" rel="noreferrer">
-              Ro'yxatdan o'tish
+              {bot.register}
             </a>
             <a className="button secondary" href={telegramBotUrl} target="_blank" rel="noreferrer">
-              Botni ochish
+              {bot.open}
             </a>
           </div>
         </div>
 
-        <div className="bot-phone" aria-label="Telegram bot menyusi namunasi">
+        <div className="bot-phone" aria-label={bot.phoneAria}>
           <div className="bot-phone-header">
             <span />
             <strong>@hackproMbot</strong>
           </div>
           <div className="bot-chat">
-            <div className="bot-message">Assalomu alaykum! HackPro botiga xush kelibsiz.</div>
+            <div className="bot-message">{bot.welcome}</div>
             <div className="bot-menu-preview">
-              <span><b>01</b> Kurslar</span>
-              <span><b>02</b> Sayt haqida</span>
-              <span><b>03</b> Tizimlar</span>
-              <span><b>04</b> Ro'yxatdan o'tish</span>
+              {bot.menu.map((item, index) => (
+                <span key={item}>
+                  <b>{String(index + 1).padStart(2, '0')}</b> {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>

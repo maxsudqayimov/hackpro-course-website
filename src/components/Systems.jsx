@@ -1,16 +1,15 @@
 import SectionHeading from './SectionHeading.jsx';
-import { modernSystems } from '../data/siteData.js';
 
-export default function Systems() {
+export default function Systems({ content }) {
   return (
     <section className="section-shell content-section" id="systems">
       <SectionHeading
-        eyebrow="Modern systems"
-        title="HackPro ichidagi zamonaviy tizimlar"
-        text="O'quv jarayoni sayt, Telegram bot, amaliy laboratoriyalar va avtomatlashtirilgan ariza tizimi bilan birga ishlaydi."
+        eyebrow={content.systemsSection.eyebrow}
+        title={content.systemsSection.title}
+        text={content.systemsSection.text}
       />
       <div className="systems-grid">
-        {modernSystems.map(({ title, description, tags, Icon }) => (
+        {content.modernSystems.map(({ title, description, tags, Icon }) => (
           <article className="system-card" key={title}>
             <div className="system-card-top">
               <div className="course-icon">
