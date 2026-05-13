@@ -1,0 +1,17 @@
+{
+  "name": "HackPro",
+  "short_name": "HackPro",
+  "description": "HackPro - kelajak texnologiyalari kurslari",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#34f5ff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
