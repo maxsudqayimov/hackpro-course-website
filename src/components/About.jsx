@@ -2,14 +2,18 @@ export default function About({ content }) {
   return (
     <section className="about-section" id="about">
       <div className="section-shell about-grid">
-        <div>
+        <div className="about-copy">
           <span className="eyebrow">{content.about.eyebrow}</span>
           <h2>{content.about.title}</h2>
-        </div>
-        <div className="about-copy">
           {content.about.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+        </div>
+        <div className="about-photo">
+          <picture>
+            <source srcSet="/hackpro-mentor.webp" type="image/webp" />
+            <img src="/hackpro-mentor.png" alt={content.about.imageAlt} loading="lazy" />
+          </picture>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ export default function Navbar({ content, language, onLanguageChange }) {
 
   return (
     <header className="navbar">
-      <a className="brand" href="#home" onClick={closeMenu} aria-label={content.homeAria}>
+      <a className="brand" href="/#home" onClick={closeMenu} aria-label={content.homeAria}>
         <BrandLogo />
         <span className="brand-word">HackPro</span>
       </a>

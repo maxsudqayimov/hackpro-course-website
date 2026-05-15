@@ -23,7 +23,7 @@ export default function BotConnect({ content }) {
         <div className="bot-phone" aria-label={bot.phoneAria}>
           <div className="bot-phone-header">
             <span />
-            <strong>@hackproMbot</strong>
+            <strong>@Hackproacademy_bot</strong>
           </div>
           <div className="bot-chat">
             <div className="bot-message">{bot.welcome}</div>

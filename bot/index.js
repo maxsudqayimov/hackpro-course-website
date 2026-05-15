@@ -15,6 +15,18 @@ const token = getRequiredEnv('TELEGRAM_BOT_TOKEN');
 const adminChatIds = getAdminChatIds();
 const apiBase = `https://api.telegram.org/bot${token}`;
 const sessions = new Map();
+const requestTimeoutMs = Number(process.env.TELEGRAM_REQUEST_TIMEOUT_MS || 60000);
+
+const botCommands = [
+  { command: 'start', description: 'Asosiy menyu' },
+  { command: 'courses', description: 'Kurslar ro‘yxati' },
+  { command: 'lessons', description: 'Darsliklar' },
+  { command: 'register', description: 'Kursga yozilish' },
+  { command: 'ask', description: 'Adminga savol yuborish' },
+  { command: 'contact', description: 'Kontaktlar' },
+  { command: 'help', description: 'Yordam' },
+  { command: 'id', description: 'Chat ID ni ko‘rish' },
+];
 
 function mainMenuKeyboard() {
   return {
@@ -137,11 +149,26 @@ function inquiryText(inquiry) {
 }
 
 async function api(method, params = {}) {
-  const response = await fetch(`${apiBase}/${method}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
+
+  let response;
+  try {
+    response = await fetch(`${apiBase}/${method}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+      signal: controller.signal,
+    });
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new Error(`${method} timeout after ${requestTimeoutMs}ms`);
+    }
+    const cause = error.cause?.code || error.cause?.message || error.message;
+    throw new Error(`${method} network error: ${cause}`);
+  } finally {
+    clearTimeout(timeout);
+  }
 
   const payload = await response.json();
   if (!payload.ok) {
@@ -180,9 +207,15 @@ async function notifyAdmins(lead) {
     return;
   }
 
-  await Promise.allSettled(
+  const results = await Promise.allSettled(
     adminChatIds.map((adminChatId) => sendMessage(adminChatId, leadText(lead))),
   );
+
+  results.forEach((result, index) => {
+    if (result.status === 'rejected') {
+      console.error(`Admin xabar yuborilmadi (${adminChatIds[index]}):`, result.reason?.message || result.reason);
+    }
+  });
 }
 
 async function notifyAdminsAboutInquiry(inquiry) {
@@ -191,9 +224,15 @@ async function notifyAdminsAboutInquiry(inquiry) {
     return;
   }
 
-  await Promise.allSettled(
+  const results = await Promise.allSettled(
     adminChatIds.map((adminChatId) => sendMessage(adminChatId, inquiryText(inquiry))),
   );
+
+  results.forEach((result, index) => {
+    if (result.status === 'rejected') {
+      console.error(`Admin savol yuborilmadi (${adminChatIds[index]}):`, result.reason?.message || result.reason);
+    }
+  });
 }
 
 async function showHome(chatId, messageId) {
@@ -411,6 +450,7 @@ async function showContact(chatId, messageId) {
     '',
     `Telefon: ${center.phone}`,
     `Telegram: ${center.telegram}`,
+    `Admin: ${center.admin}`,
     `Manzil: ${center.address}`,
     `Ish vaqti: ${center.workHours}`,
   ].join('\n');
@@ -924,6 +964,7 @@ async function poll() {
   let retryDelay = 3000;
 
   await api('deleteWebhook', { drop_pending_updates: false });
+  await api('setMyCommands', { commands: botCommands });
   console.log(`${center.name} Telegram bot ishga tushdi. Offset: ${offset || 'new'}`);
 
   while (true) {
@@ -941,6 +982,9 @@ async function poll() {
           offset,
           lastUpdateId: update.update_id,
           lastUpdateAt: new Date().toISOString(),
+          lastOkAt: new Date().toISOString(),
+          lastError: null,
+          lastErrorAt: null,
         });
       }
 

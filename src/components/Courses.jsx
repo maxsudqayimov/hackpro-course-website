@@ -9,26 +9,34 @@ export default function Courses({ content }) {
         text={content.coursesSection.text}
       />
       <div className="course-grid">
-        {content.courses.map(({ id, title, tag, description, Icon }) => (
+        {content.courses.map(
+          ({ id, title, tag, description, duration, path, cardLabel, cardImage, cardImageAlt, cardAccent, Icon }) => (
           <a
             className="course-card"
-            href={`#course/${id}`}
+            href={path}
             key={id}
             aria-label={`${title} ${content.coursesSection.ariaSuffix}`}
+            style={{ '--course-accent': cardAccent }}
           >
-            <div className="course-card-heading">
-              <div className="course-icon">
-                <Icon />
+            <img className="course-card-image" src={cardImage} alt={cardImageAlt} loading="lazy" />
+            <div className="course-card-overlay">
+              <div className="course-card-heading">
+                <span>{cardLabel}</span>
+                <div className="course-icon">
+                  <Icon />
+                </div>
               </div>
-              <div>
-                <span>{tag}</span>
-                <h3>{title}</h3>
+              <h3>{title}</h3>
+              <strong className="course-duration">{duration}</strong>
+              <p>{description}</p>
+              <div className="course-card-bottom">
+                <small>{tag}</small>
+                <strong className="course-more">{content.coursesSection.more}</strong>
               </div>
             </div>
-            <p>{description}</p>
-            <strong className="course-more">{content.coursesSection.more}</strong>
           </a>
-        ))}
+          ),
+        )}
       </div>
     </section>
   );

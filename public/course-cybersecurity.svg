@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 860">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#02050c"/>
+      <stop offset=".56" stop-color="#09111d"/>
+      <stop offset="1" stop-color="#091005"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".45" cy=".68" r=".58">
+      <stop stop-color="#f9e000" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#ff9f0a" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+  <rect width="640" height="860" rx="30" fill="url(#bg)"/>
+  <rect width="640" height="860" rx="30" fill="url(#glow)"/>
+  <g stroke="#ffe500" stroke-opacity=".16" stroke-width="2">
+    <path d="M0 188h640M0 378h640M0 568h640M0 758h640M128 0v860M320 0v860M512 0v860"/>
+  </g>
+  <g fill="#ffe500" fill-opacity=".25" font-family="Consolas, monospace" font-size="20">
+    <text x="50" y="348">sudo scan --safe</text>
+    <text x="380" y="432">hash: verified</text>
+    <text x="76" y="610">access granted</text>
+  </g>
+  <ellipse cx="312" cy="608" rx="224" ry="96" fill="#ffb000" opacity=".42" filter="url(#blur)"/>
+  <path d="M318 294 174 352v122c0 124 74 220 144 250 70-30 144-126 144-250V352L318 294Z" fill="#151923" stroke="#ffe500" stroke-width="9"/>
+  <path d="M318 334 218 374v96c0 84 46 154 100 184 54-30 100-100 100-184v-96l-100-40Z" fill="#05080d"/>
+  <path d="m255 492 42 42 92-114" fill="none" stroke="#ffe500" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#fff9aa" opacity=".95">
+    <circle cx="182" cy="274" r="6"/>
+    <circle cx="464" cy="250" r="5"/>
+    <circle cx="502" cy="646" r="7"/>
+  </g>
+</svg>

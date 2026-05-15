@@ -93,19 +93,50 @@ function getAssistantReply(input, content) {
       .join(', ')}. ${aiChat.systemsSuffix}`;
   }
 
-  if (query.includes('narx') || query.includes('tolov') || query.includes('pul') || query.includes('price') || query.includes('cost') || query.includes('цена') || query.includes('стоим')) {
+  if (
+    query.includes('narx') ||
+    query.includes('tolov') ||
+    query.includes('pul') ||
+    query.includes('price') ||
+    query.includes('cost') ||
+    query.includes('цена') ||
+    query.includes('стоим')
+  ) {
     return aiChat.price;
   }
 
-  if (query.includes('kontakt') || query.includes('contact') || query.includes('контакт') || query.includes('telefon') || query.includes('phone') || query.includes('manzil') || query.includes('address') || query.includes('qayer')) {
+  if (
+    query.includes('kontakt') ||
+    query.includes('contact') ||
+    query.includes('контакт') ||
+    query.includes('telefon') ||
+    query.includes('phone') ||
+    query.includes('manzil') ||
+    query.includes('address') ||
+    query.includes('qayer')
+  ) {
     return aiChat.contact;
   }
 
-  if (query.includes('yozil') || query.includes('royxat') || query.includes('register') || query.includes('запис') || query.includes('start') || query.includes('oqish')) {
+  if (
+    query.includes('yozil') ||
+    query.includes('royxat') ||
+    query.includes('register') ||
+    query.includes('запис') ||
+    query.includes('start') ||
+    query.includes('oqish')
+  ) {
     return aiChat.register;
   }
 
-  if (query.includes('qaysi') || query.includes('which') || query.includes('choose') || query.includes('какой') || query.includes('tanla') || query.includes('maslahat')) {
+  if (
+    query.includes('qaysi') ||
+    query.includes('which') ||
+    query.includes('choose') ||
+    query.includes('какой') ||
+    query.includes('tanla') ||
+    query.includes('maslahat')
+  ) {
     return aiChat.advice;
   }
 

@@ -1,4 +1,4 @@
-import { telegramBotUrl, telegramChannelUrl } from '../data/siteData.js';
+import { instagramUrl, telegramAdminUrl, telegramBotUrl, telegramChannelUrl } from '../data/siteData.js';
 import BrandLogo from './BrandLogo.jsx';
 
 export default function Footer({ content }) {
@@ -6,7 +6,7 @@ export default function Footer({ content }) {
     <footer className="footer">
       <div className="section-shell footer-grid">
         <div>
-          <a className="brand" href="#home" aria-label={content.homeAria}>
+          <a className="brand" href="/#home" aria-label={content.homeAria}>
             <BrandLogo />
             <span className="brand-word">HackPro</span>
           </a>
@@ -26,7 +26,13 @@ export default function Footer({ content }) {
           <a href={telegramChannelUrl} target="_blank" rel="noreferrer">
             {content.footer.channel}
           </a>
-          <a href="#contact">{content.footer.address}</a>
+          <a href={telegramAdminUrl} target="_blank" rel="noreferrer">
+            {content.footer.admin}
+          </a>
+          <a href={instagramUrl} target="_blank" rel="noreferrer">
+            {content.footer.instagram}
+          </a>
+          <a href="/#contact">{content.footer.address}</a>
         </div>
       </div>
       <div className="section-shell footer-bottom">

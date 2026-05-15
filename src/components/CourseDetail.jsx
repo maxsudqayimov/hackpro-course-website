@@ -7,7 +7,7 @@ export default function CourseDetail({ course, content }) {
   return (
     <main className="course-detail-page">
       <section className="section-shell course-detail-hero">
-        <a className="back-link" href="#courses">
+        <a className="back-link" href="/#courses">
           {labels.back}
         </a>
 
@@ -20,7 +20,7 @@ export default function CourseDetail({ course, content }) {
               <a className="button primary" href={telegramRegisterUrl} target="_blank" rel="noreferrer">
                 {labels.register}
               </a>
-              <a className="button secondary" href="#courses">
+              <a className="button secondary" href="/#courses">
                 {labels.otherCourses}
               </a>
             </div>
@@ -75,6 +75,18 @@ export default function CourseDetail({ course, content }) {
                 <strong>{item}</strong>
                 <p>{labels.projectText}</p>
               </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="course-faq">
+          <h2>{content.faqTitle}</h2>
+          <div className="faq-list">
+            {course.faqs.map(([question, answer]) => (
+              <details key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
             ))}
           </div>
         </article>

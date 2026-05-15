@@ -1,10 +1,11 @@
 export const center = {
   name: 'HackPro',
-  botUsername: 'hackproMbot',
+  botUsername: 'Hackproacademy_bot',
   phone: '+998 93 434 01 09',
-  telegram: '@hackpro_M',
-  bot: '@hackproMbot',
-  address: 'Zarafshon shahri, Kelajak markazi',
+  telegram: '@HackPro_Academy',
+  admin: '@HackProAcademy',
+  bot: '@Hackproacademy_bot',
+  address: 'Zarafshon shahri, HackPro Academy',
   workHours: 'Har kuni 09:00 - 20:00',
   intro:
     "HackPro - texnologiya sohasida amaliy kurslar beradigan o'quv markazi. Bot orqali kurs tanlash, maslahat olish va ro'yxatdan o'tish mumkin.",

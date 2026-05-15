@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
+  <defs>
+    <linearGradient id="blue" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#24a8ff"/>
+      <stop offset="1" stop-color="#0877e8"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#4b5563"/>
+      <stop offset="1" stop-color="#1f2430"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="300" fill="none"/>
+  <g transform="translate(214 78) rotate(-4)">
+    <rect x="0" y="20" width="238" height="92" rx="10" fill="url(#blue)"/>
+    <text x="28" y="78" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="850">Kettu!</text>
+  </g>
+  <g transform="translate(318 156)">
+    <path d="M-74 0h160l16 70H-90Z" fill="url(#dark)"/>
+    <rect x="-58" y="-28" width="110" height="66" rx="10" fill="#4a4e5c"/>
+    <circle cx="-2" cy="4" r="14" fill="#d9deee"/>
+    <path d="M86-60c28 20 26 76-14 112" fill="none" stroke="#e6e9f3" stroke-width="15" stroke-linecap="round"/>
+    <path d="M62-34c22 17 18 48-7 72" fill="none" stroke="#b4bac9" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="58" cy="-36" r="14" fill="#d9deee"/>
+  </g>
+  <g stroke="#d8e5ff" stroke-width="5" stroke-linecap="round" opacity=".28">
+    <path d="M90 94h82M90 124h126M90 154h72"/>
+    <path d="M74 208h138"/>
+  </g>
+</svg>

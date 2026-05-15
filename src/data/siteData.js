@@ -14,10 +14,13 @@ import {
   ShieldIcon,
   SparkIcon,
 } from '../components/icons.jsx';
+import { enhanceSiteContent } from './siteEnhancements.js';
 
-export const telegramBotUrl = 'https://t.me/hackproMbot?start=website';
-export const telegramRegisterUrl = 'https://t.me/hackproMbot?start=register';
-export const telegramChannelUrl = 'https://t.me/hackpro_M';
+export const telegramBotUrl = 'https://t.me/Hackproacademy_bot?start=website';
+export const telegramRegisterUrl = 'https://t.me/Hackproacademy_bot?start=register';
+export const telegramChannelUrl = 'https://t.me/HackPro_Academy';
+export const telegramAdminUrl = 'https://t.me/HackProAcademy';
+export const instagramUrl = 'https://www.instagram.com/hackpro_academy/';
 
 export const defaultLanguage = 'uz';
 
@@ -31,6 +34,7 @@ const navIcons = {
   home: HomeIcon,
   courses: BookIcon,
   systems: ChipIcon,
+  pricing: CertificateIcon,
   bot: BotIcon,
   about: InfoIcon,
   advantages: SparkIcon,
@@ -49,13 +53,14 @@ const systemIcons = [ProjectIcon, AiIcon, ChipIcon, ShieldIcon];
 const advantageIcons = [ProjectIcon, MentorIcon, SparkIcon, CertificateIcon, GlobeIcon, CodeIcon];
 
 const navHrefs = {
-  home: '#home',
-  courses: '#courses',
-  systems: '#systems',
-  bot: '#telegram-bot',
-  about: '#about',
-  advantages: '#advantages',
-  contact: '#contact',
+  home: '/#home',
+  courses: '/#courses',
+  systems: '/#systems',
+  pricing: '/#pricing',
+  bot: '/#telegram-bot',
+  about: '/#about',
+  advantages: '/#advantages',
+  contact: '/#contact',
 };
 
 function withNav(labels) {
@@ -98,10 +103,11 @@ export const siteContent = {
       home: 'Bosh sahifa',
       courses: 'Kurslar',
       systems: 'Tizimlar',
+      pricing: 'Narxlar',
       bot: 'Bot',
       about: 'Haqida',
       advantages: 'Afzalliklar',
-      contact: 'Kontakt',
+      contact: 'Aloqa',
     }),
     hero: {
       eyebrow: 'Professional technology academy',
@@ -270,6 +276,7 @@ export const siteContent = {
         "HackPro o'quvchilarga zamonaviy texnologiyalarni nazariya bilan cheklanmasdan, amaliy laboratoriyalar va real hayotga yaqin topshiriqlar orqali o'rgatadi.",
         "Platformada mentor qo'llab-quvvatlashi, career-focused o'quv rejasi, portfolio uchun loyihalar va professional muhitda ishlatiladigan metodlar jamlangan.",
       ],
+      imageAlt: "HackPro o'quv markazi mentori kompyuter sinfida",
     },
     advantagesSection: {
       eyebrow: 'Advantages',
@@ -291,13 +298,15 @@ export const siteContent = {
       { value: '24/7', label: "qo'llab-quvvatlash" },
     ],
     contact: {
-      eyebrow: 'Contact',
+      eyebrow: 'Aloqa',
       title: 'HackPro kurslari haqida maslahat oling',
       text:
         "Yo'nalishni tanlang, savolingizni yuboring va jamoamiz sizga o'qish formati, kurs dasturi va boshlash jarayoni bo'yicha yordam beradi.",
-      registerLabel: "@hackproMbot - ro'yxatdan o'tish",
-      channelLabel: '@hackpro_M - Telegram kanal',
-      address: 'Zarafshon shahri, Kelajak markazi',
+      registerLabel: "@Hackproacademy_bot - ro'yxatdan o'tish",
+      channelLabel: '@HackPro_Academy - Telegram kanal',
+      adminLabel: '@HackProAcademy - Telegram admin',
+      instagramLabel: '@hackpro_academy - Instagram',
+      address: 'Zarafshon shahri, HackPro Academy',
       fields: {
         name: 'Ism',
         namePlaceholder: 'Ismingiz',
@@ -314,6 +323,8 @@ export const siteContent = {
       socialAria: 'Ijtimoiy tarmoqlar',
       bot: 'Telegram bot',
       channel: 'Telegram kanal',
+      admin: 'Telegram admin',
+      instagram: 'Instagram',
       address: 'Manzil',
       copyright: '(c) 2026 HackPro. Barcha huquqlar himoyalangan.',
     },
@@ -325,6 +336,8 @@ export const siteContent = {
       input: 'Savolingizni yozing',
       inputAria: 'AI chat savoli',
       send: 'Yuborish',
+      sending: 'Kuting',
+      thinking: 'AI javob tayyorlayapti...',
       sendAria: 'AI chatga yuborish',
       link: "Telegram bot orqali ro'yxatdan o'tish",
       openAria: 'AI chatni ochish',
@@ -336,7 +349,7 @@ export const siteContent = {
         "Sun'iy intellekt kursi",
         'Robototexnika kursi',
         'Dasturlash kursi',
-        'Kontaktlar',
+        'Aloqa',
       ],
       welcome:
         "Salom! Men HackPro AI yordamchisiman. Kurs tanlash, ro'yxatdan o'tish yoki kontaktlar bo'yicha savol bering.",
@@ -350,7 +363,7 @@ export const siteContent = {
       price:
         "Narxlar kurs formati va guruhga qarab belgilanadi. Eng aniq ma'lumot uchun Telegram bot orqali ro'yxatdan o'ting, admin siz bilan bog'lanadi.",
       contact:
-        'Kontakt: +998 93 434 01 09. Manzil: Zarafshon shahri, Kelajak markazi. Telegram bot orqali ham ariza qoldirishingiz mumkin.',
+        'Aloqa: +998 93 434 01 09. Manzil: Zarafshon shahri, HackPro Academy. Telegram bot yoki Instagram orqali ham yozishingiz mumkin.',
       register:
         "Ro'yxatdan o'tish uchun pastdagi Telegram tugmasini bosing. Bot ismingiz, telefon raqamingiz, kurs va o'qish formatini so'raydi.",
       advice:
@@ -369,6 +382,7 @@ export const siteContent = {
       home: 'Главная',
       courses: 'Курсы',
       systems: 'Системы',
+      pricing: 'Цены',
       bot: 'Бот',
       about: 'О нас',
       advantages: 'Преимущества',
@@ -541,6 +555,7 @@ export const siteContent = {
         'HackPro обучает современным технологиям не только через теорию, но и через практические лаборатории и задания, близкие к реальной работе.',
         'Платформа объединяет поддержку ментора, career-focused учебный план, проекты для портфолио и методы, которые используются в профессиональной среде.',
       ],
+      imageAlt: 'Ментор учебного центра HackPro в компьютерном классе',
     },
     advantagesSection: {
       eyebrow: 'Advantages',
@@ -566,9 +581,11 @@ export const siteContent = {
       title: 'Получите консультацию по курсам HackPro',
       text:
         'Выберите направление, отправьте вопрос, и наша команда поможет с форматом обучения, программой курса и началом занятий.',
-      registerLabel: '@hackproMbot - запись на обучение',
-      channelLabel: '@hackpro_M - Telegram канал',
-      address: 'город Зарафшан, центр Келажак',
+      registerLabel: '@Hackproacademy_bot - запись на обучение',
+      channelLabel: '@HackPro_Academy - Telegram канал',
+      adminLabel: '@HackProAcademy - Telegram admin',
+      instagramLabel: '@hackpro_academy - Instagram',
+      address: 'город Зарафшан, HackPro Academy',
       fields: {
         name: 'Имя',
         namePlaceholder: 'Ваше имя',
@@ -585,6 +602,8 @@ export const siteContent = {
       socialAria: 'Социальные сети',
       bot: 'Telegram бот',
       channel: 'Telegram канал',
+      admin: 'Telegram admin',
+      instagram: 'Instagram',
       address: 'Адрес',
       copyright: '(c) 2026 HackPro. Все права защищены.',
     },
@@ -596,6 +615,8 @@ export const siteContent = {
       input: 'Напишите вопрос',
       inputAria: 'Вопрос для AI chat',
       send: 'Отправить',
+      sending: 'Ждите',
+      thinking: 'AI готовит ответ...',
       sendAria: 'Отправить в AI chat',
       link: 'Записаться через Telegram-бота',
       openAria: 'Открыть AI chat',
@@ -621,7 +642,7 @@ export const siteContent = {
       price:
         'Стоимость зависит от формата курса и группы. Для точной информации запишитесь через Telegram-бота, администратор свяжется с вами.',
       contact:
-        'Контакт: +998 93 434 01 09. Адрес: город Зарафшан, центр Келажак. Также можно оставить заявку через Telegram-бота.',
+        'Контакт: +998 93 434 01 09. Адрес: город Зарафшан, HackPro Academy. Также можно написать через Telegram-бот или Instagram.',
       register:
         'Для записи нажмите кнопку Telegram ниже. Бот спросит имя, телефон, курс и формат обучения.',
       advice:
@@ -640,6 +661,7 @@ export const siteContent = {
       home: 'Home',
       courses: 'Courses',
       systems: 'Systems',
+      pricing: 'Pricing',
       bot: 'Bot',
       about: 'About',
       advantages: 'Benefits',
@@ -812,6 +834,7 @@ export const siteContent = {
         'HackPro teaches modern technologies through practical labs and real-world tasks, not theory alone.',
         'The platform brings together mentor support, a career-focused curriculum, portfolio projects and methods used in professional environments.',
       ],
+      imageAlt: 'HackPro learning center mentor in a computer classroom',
     },
     advantagesSection: {
       eyebrow: 'Advantages',
@@ -837,9 +860,11 @@ export const siteContent = {
       title: 'Get advice about HackPro courses',
       text:
         'Choose a track, send your question and our team will help with the learning format, course program and getting started.',
-      registerLabel: '@hackproMbot - registration',
-      channelLabel: '@hackpro_M - Telegram channel',
-      address: 'Zarafshan city, Kelajak center',
+      registerLabel: '@Hackproacademy_bot - registration',
+      channelLabel: '@HackPro_Academy - Telegram channel',
+      adminLabel: '@HackProAcademy - Telegram admin',
+      instagramLabel: '@hackpro_academy - Instagram',
+      address: 'Zarafshan city, HackPro Academy',
       fields: {
         name: 'Name',
         namePlaceholder: 'Your name',
@@ -856,6 +881,8 @@ export const siteContent = {
       socialAria: 'Social links',
       bot: 'Telegram bot',
       channel: 'Telegram channel',
+      admin: 'Telegram admin',
+      instagram: 'Instagram',
       address: 'Address',
       copyright: '(c) 2026 HackPro. All rights reserved.',
     },
@@ -867,6 +894,8 @@ export const siteContent = {
       input: 'Write your question',
       inputAria: 'AI chat question',
       send: 'Send',
+      sending: 'Wait',
+      thinking: 'AI is preparing an answer...',
       sendAria: 'Send to AI chat',
       link: 'Register via Telegram bot',
       openAria: 'Open AI chat',
@@ -892,7 +921,7 @@ export const siteContent = {
       price:
         'Pricing depends on course format and group. For exact information, register through the Telegram bot and an admin will contact you.',
       contact:
-        'Contact: +998 93 434 01 09. Address: Zarafshan city, Kelajak center. You can also submit an application via the Telegram bot.',
+        'Contact: +998 93 434 01 09. Address: Zarafshan city, HackPro Academy. You can also contact us via the Telegram bot or Instagram.',
       register:
         'To register, click the Telegram button below. The bot will ask for your name, phone number, course and learning format.',
       advice:
@@ -904,5 +933,6 @@ export const siteContent = {
 };
 
 export function getSiteContent(language) {
-  return siteContent[language] || siteContent[defaultLanguage];
+  const selectedLanguage = siteContent[language] ? language : defaultLanguage;
+  return enhanceSiteContent(siteContent[selectedLanguage], selectedLanguage);
 }
