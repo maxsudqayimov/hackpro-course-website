@@ -32,11 +32,6 @@ function getAssistantReply(input, content) {
     return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
-  if (query.includes('iot') || query.includes('arduino') || query.includes('esp') || query.includes('sensor')) {
-    const course = buildCourseAnswer(findCourse(courses, 'iot') || courses[1]);
-    return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
-  }
-
   if (
     query.includes('ai') ||
     query.includes('suniy') ||
@@ -51,13 +46,21 @@ function getAssistantReply(input, content) {
         findCourse(courses, 'suniy') ||
           findCourse(courses, 'intelligence') ||
           findCourse(courses, 'интел') ||
-          courses[2],
+          courses[1],
       );
     return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
-  if (query.includes('robot') || query.includes('робот') || query.includes('mexatron') || query.includes('motor')) {
-    const course = buildCourseAnswer(findCourse(courses, 'robot') || findCourse(courses, 'робот') || courses[3]);
+  if (
+    query.includes('robot') ||
+    query.includes('робот') ||
+    query.includes('mexatron') ||
+    query.includes('motor') ||
+    query.includes('arduino') ||
+    query.includes('esp') ||
+    query.includes('sensor')
+  ) {
+    const course = buildCourseAnswer(findCourse(courses, 'robot') || findCourse(courses, 'робот') || courses[2]);
     return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }
 
@@ -72,10 +75,10 @@ function getAssistantReply(input, content) {
   ) {
     const course =
       buildCourseAnswer(
-        findCourse(courses, 'dastur') ||
+          findCourse(courses, 'dastur') ||
           findCourse(courses, 'program') ||
           findCourse(courses, 'программ') ||
-          courses[4],
+          courses[3],
       );
     return `${course.title}: ${course.description} ${aiChat.courseSuffix}`;
   }

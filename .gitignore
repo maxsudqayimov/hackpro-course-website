@@ -6,3 +6,7 @@ dist
 *.log
 *.err
 bot/data
+__pycache__/
+*.pyc
+jarvis-desktop/.venv/
+jarvis-desktop/data/

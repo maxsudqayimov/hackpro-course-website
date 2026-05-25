@@ -42,8 +42,13 @@ export default async function handler(req, res) {
     const name = clean(payload.name);
     const phone = clean(payload.phone);
     const course = clean(payload.course);
+    const format = clean(payload.format);
+    const time = clean(payload.time);
     const message = clean(payload.message);
     const language = clean(payload.language || 'uz');
+    const source = clean(payload.source || 'contact-form');
+    const page = clean(payload.page || req.headers.referer || 'hackpro.uz');
+    const leadId = `HP-${Date.now().toString(36).toUpperCase()}`;
 
     if (name.length < 2 || phone.length < 7 || !course) {
       return json(res, 400, {
@@ -66,15 +71,19 @@ export default async function handler(req, res) {
     }
 
     const text = [
-      'HackPro sayt arizasi',
+      `HackPro CRM arizasi: ${leadId}`,
       '',
       `Ism: ${name}`,
       `Telefon: ${phone}`,
       `Kurs: ${course}`,
+      format ? `Format: ${format}` : null,
+      time ? `Qulay vaqt: ${time}` : null,
       `Til: ${language}`,
+      `Manba: ${source}`,
       message ? `Xabar: ${message}` : null,
       '',
-      `Sahifa: ${req.headers.referer || 'hackpro.uz'}`,
+      `Sahifa: ${page}`,
+      `Vaqt: ${new Date().toISOString()}`,
     ]
       .filter(Boolean)
       .join('\n');

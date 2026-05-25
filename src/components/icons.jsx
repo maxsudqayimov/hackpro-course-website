@@ -128,6 +128,16 @@ export function PhoneIcon() {
   );
 }
 
+export function CameraIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M4 7h4l1.5-2h5L16 7h4v12H4z" />
+      <circle cx="12" cy="13" r="3.5" />
+      <path d="M18 10h.01" />
+    </svg>
+  );
+}
+
 export function BotIcon() {
   return (
     <svg {...iconProps}>

@@ -1,8 +1,22 @@
 import { telegramRegisterUrl } from '../data/siteData.js';
+import LeadForm from './LeadForm.jsx';
 
 export default function CourseDetail({ course, content }) {
   const { Icon } = course;
   const labels = content.courseDetail;
+  const detailLabels = {
+    audience: content.language === 'en' ? 'Who is this course for?' : content.language === 'ru' ? 'Для кого этот курс?' : 'Bu kurs kimlar uchun?',
+    roadmap: content.language === 'en' ? 'Learning roadmap' : content.language === 'ru' ? 'Карта обучения' : "O'qish yo'l xaritasi",
+    skills: content.language === 'en' ? 'Practical skills' : content.language === 'ru' ? 'Практические навыки' : "Amaliy ko'nikmalar",
+    seo: content.language === 'en' ? 'Search topics covered' : content.language === 'ru' ? 'Темы для поиска' : 'Google va Yandex uchun mavzular',
+    registerTitle: content.language === 'en' ? 'Register for this course online' : content.language === 'ru' ? 'Онлайн запись на этот курс' : "Shu kursga online ro'yxatdan o'ting",
+    registerText:
+      content.language === 'en'
+        ? 'The request goes directly to Telegram CRM with this course selected.'
+        : content.language === 'ru'
+          ? 'Заявка попадет в Telegram CRM с выбранным курсом.'
+          : "Ariza Telegram CRM ga aynan shu kurs tanlangan holda tushadi.",
+  };
 
   return (
     <main className="course-detail-page">
@@ -79,6 +93,46 @@ export default function CourseDetail({ course, content }) {
           </div>
         </article>
 
+        <article className="course-deep-grid">
+          <div>
+            <h2>{detailLabels.audience}</h2>
+            <ul className="detail-list">
+              {(course.audience || []).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2>{detailLabels.roadmap}</h2>
+            <div className="roadmap-list">
+              {(course.roadmap || []).map((item, index) => (
+                <div key={item}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{item}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <h2>{detailLabels.skills}</h2>
+          <div className="detail-chip-grid">
+            {(course.skills || []).map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </article>
+
+        <article>
+          <h2>{detailLabels.seo}</h2>
+          <div className="detail-chip-grid seo-chip-grid">
+            {(course.keywords || []).map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </article>
+
         <article className="course-faq">
           <h2>{content.faqTitle}</h2>
           <div className="faq-list">
@@ -89,6 +143,14 @@ export default function CourseDetail({ course, content }) {
               </details>
             ))}
           </div>
+        </article>
+
+        <article className="course-register-card">
+          <div>
+            <h2>{detailLabels.registerTitle}</h2>
+            <p>{detailLabels.registerText}</p>
+          </div>
+          <LeadForm content={content} defaultCourse={course.title} source={`course-${course.id}`} compact />
         </article>
       </section>
     </main>

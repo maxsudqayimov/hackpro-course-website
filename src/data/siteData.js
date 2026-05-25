@@ -2,6 +2,7 @@ import {
   AiIcon,
   BookIcon,
   BotIcon,
+  CameraIcon,
   CertificateIcon,
   ChipIcon,
   CodeIcon,
@@ -35,7 +36,9 @@ const navIcons = {
   courses: BookIcon,
   systems: ChipIcon,
   pricing: CertificateIcon,
+  register: PhoneIcon,
   bot: BotIcon,
+  blog: BookIcon,
   about: InfoIcon,
   advantages: SparkIcon,
   contact: PhoneIcon,
@@ -43,10 +46,10 @@ const navIcons = {
 
 const courseIcons = {
   cybersecurity: ShieldIcon,
-  iot: ChipIcon,
   ai: AiIcon,
   robotics: BotIcon,
   programming: CodeIcon,
+  mobilegraphy: CameraIcon,
 };
 
 const systemIcons = [ProjectIcon, AiIcon, ChipIcon, ShieldIcon];
@@ -57,7 +60,9 @@ const navHrefs = {
   courses: '/#courses',
   systems: '/#systems',
   pricing: '/#pricing',
+  register: '/#register',
   bot: '/#telegram-bot',
+  blog: '/#blog',
   about: '/#about',
   advantages: '/#advantages',
   contact: '/#contact',
@@ -104,7 +109,9 @@ export const siteContent = {
       courses: 'Kurslar',
       systems: 'Tizimlar',
       pricing: 'Narxlar',
+      register: "Ro'yxatdan o'tish",
       bot: 'Bot',
+      blog: 'Blog',
       about: 'Haqida',
       advantages: 'Afzalliklar',
       contact: 'Aloqa',
@@ -113,14 +120,14 @@ export const siteContent = {
       eyebrow: 'Professional technology academy',
       title: "Kelajak texnologiyalarini HackPro bilan o'rganing",
       text:
-        "Kiberxavfsizlik, IoT va sun'iy intellekt bo'yicha amaliy kurslar: real loyihalar, mentor yordami va IT karyera uchun aniq yo'l xaritasi.",
+        "Kiberxavfsizlik, sun'iy intellekt, robototexnika va dasturlash bo'yicha amaliy kurslar: real loyihalar, mentor yordami va IT karyera uchun aniq yo'l xaritasi.",
       primary: "Kurslarni ko'rish",
       secondary: 'Telegram bot',
       trustAria: 'Platforma afzalliklari',
-      trust: ['Ethical cybersecurity', 'Real IoT labs', 'AI project studio'],
+      trust: ['Ethical cybersecurity', 'Robotics lab', 'AI project studio'],
       visualAria: "HackPro texnologiya platformasi ko'rinishi",
-      iotLabel: 'IoT Nodes',
-      iotText: 'connected devices',
+      labLabel: 'Cyber Lab',
+      labText: 'safe practice',
       aiLabel: 'AI Studio',
       aiText: 'model accuracy lab',
     },
@@ -147,22 +154,6 @@ export const siteContent = {
           'Portfolio uchun security audit loyiha tayyorlaysiz',
         ],
         projects: ['Classroom sandbox audit', 'Secure network checklist', 'Incident response plan'],
-      },
-      {
-        id: 'iot',
-        title: 'IoT - Internet of Things',
-        tag: 'Connected systems',
-        duration: '4 oy',
-        format: 'Offline va online',
-        description:
-          'Smart devices, sensorlar, microcontrollerlar, avtomatlashtirish, smart home va industrial IoT loyihalarini yaratish.',
-        modules: ['Arduino/ESP32 asoslari', 'Sensorlar', 'Smart home automation', 'IoT dashboard'],
-        outcomes: [
-          "Sensorlardan ma'lumot o'qish va qurilmani boshqarishni o'rganasiz",
-          'Smart qurilmalar orasida ulanish mantiqini tushunasiz',
-          'Real IoT prototip yaratib portfolio qilasiz',
-        ],
-        projects: ['Smart room controller', 'Sensor monitoring system', 'IoT mini dashboard'],
       },
       {
         id: 'ai',
@@ -212,6 +203,22 @@ export const siteContent = {
         ],
         projects: ['Personal portfolio', 'Course landing page', 'Mini CRM app'],
       },
+      {
+        id: 'mobilegraphy',
+        title: 'Mobilografiya',
+        tag: 'Mobile content',
+        duration: '2 oy',
+        format: 'Offline va online',
+        description:
+          "Smartfon orqali professional video, foto, reels, montaj, yorug'lik, kompozitsiya va kontent yaratish bo'yicha amaliy kurs.",
+        modules: ['Kamera sozlamalari', 'Kompozitsiya va yoruglik', 'Reels va short video', 'Mobil montaj'],
+        outcomes: [
+          'Telefon orqali sifatli foto va video olishni bilasiz',
+          'Reels, stories va reklama kontenti tayyorlaysiz',
+          'Portfolio uchun tayyor video/foto loyiha yaratasiz',
+        ],
+        projects: ['Product reels', 'Personal brand video', 'Mobile photo portfolio'],
+      },
     ]),
     courseDetail: {
       back: 'Kurslarga qaytish',
@@ -244,12 +251,6 @@ export const siteContent = {
         description:
           "O'quvchilar savollariga tez javob berish, kurs tanlashga yordam berish va konsultatsiya jarayonini soddalashtirish.",
         tags: ['AI assistant', 'Automation', 'FAQ'],
-      },
-      {
-        title: 'IoT laboratoriya muhiti',
-        description:
-          'Sensorlar, microcontrollerlar va smart qurilmalar bilan real laboratoriya mashgulotlari tashkil etiladi.',
-        tags: ['Arduino', 'ESP32', 'Smart devices'],
       },
       {
         title: 'Cyber Lab va xavfsiz amaliyot',
@@ -319,7 +320,7 @@ export const siteContent = {
       },
     },
     footer: {
-      text: "Kiberxavfsizlik, IoT va sun'iy intellekt bo'yicha professional, amaliy va ethical technology ta'lim platformasi.",
+      text: "Kiberxavfsizlik, sun'iy intellekt, robototexnika va dasturlash bo'yicha professional, amaliy va ethical technology ta'lim platformasi.",
       socialAria: 'Ijtimoiy tarmoqlar',
       bot: 'Telegram bot',
       channel: 'Telegram kanal',
@@ -349,6 +350,7 @@ export const siteContent = {
         "Sun'iy intellekt kursi",
         'Robototexnika kursi',
         'Dasturlash kursi',
+        'Mobilografiya kursi',
         'Aloqa',
       ],
       welcome:
@@ -367,7 +369,7 @@ export const siteContent = {
       register:
         "Ro'yxatdan o'tish uchun pastdagi Telegram tugmasini bosing. Bot ismingiz, telefon raqamingiz, kurs va o'qish formatini so'raydi.",
       advice:
-        "Agar xavfsizlik va tarmoq sizga qiziq bo'lsa Kiberxavfsizlikni, qurilmalar va sensorlar yoqsa IoT yoki Robototexnikani, data va avtomatlashtirish qiziqtirsa Sun'iy intellektni, sayt va ilova yaratish yoqsa Dasturlashni tanlang.",
+        "Agar xavfsizlik va tarmoq sizga qiziq bo'lsa Kiberxavfsizlikni, robot va texnika yoqsa Robototexnikani, data va avtomatlashtirish qiziqtirsa Sun'iy intellektni, sayt va ilova yaratish yoqsa Dasturlashni tanlang.",
       fallback:
         "Men HackPro kurslari, zamonaviy tizimlar, kontaktlar va ro'yxatdan o'tish bo'yicha yordam beraman. Savolingizni biroz aniqroq yozing yoki tezkor tugmalardan birini tanlang.",
     },
@@ -383,7 +385,9 @@ export const siteContent = {
       courses: 'Курсы',
       systems: 'Системы',
       pricing: 'Цены',
+      register: 'Запись',
       bot: 'Бот',
+      blog: 'Blog',
       about: 'О нас',
       advantages: 'Преимущества',
       contact: 'Контакты',
@@ -392,14 +396,14 @@ export const siteContent = {
       eyebrow: 'Professional technology academy',
       title: 'Изучайте технологии будущего вместе с HackPro',
       text:
-        'Практические курсы по кибербезопасности, IoT и искусственному интеллекту: реальные проекты, поддержка ментора и понятная карта развития в IT.',
+        'Практические курсы по кибербезопасности, искусственному интеллекту, робототехнике и программированию: реальные проекты, поддержка ментора и понятная карта развития в IT.',
       primary: 'Посмотреть курсы',
       secondary: 'Telegram бот',
       trustAria: 'Преимущества платформы',
-      trust: ['Ethical cybersecurity', 'Real IoT labs', 'AI project studio'],
+      trust: ['Ethical cybersecurity', 'Robotics lab', 'AI project studio'],
       visualAria: 'Визуальная панель технологической платформы HackPro',
-      iotLabel: 'IoT Nodes',
-      iotText: 'подключенных устройств',
+      labLabel: 'Cyber Lab',
+      labText: 'безопасная практика',
       aiLabel: 'AI Studio',
       aiText: 'точность модели в лаборатории',
     },
@@ -426,22 +430,6 @@ export const siteContent = {
           'Подготовите проект security audit для портфолио',
         ],
         projects: ['Classroom sandbox audit', 'Secure network checklist', 'Incident response plan'],
-      },
-      {
-        id: 'iot',
-        title: 'IoT - Internet of Things',
-        tag: 'Connected systems',
-        duration: '4 месяца',
-        format: 'Офлайн и онлайн',
-        description:
-          'Создание проектов со smart devices, сенсорами, микроконтроллерами, автоматизацией, smart home и industrial IoT.',
-        modules: ['Основы Arduino/ESP32', 'Сенсоры', 'Smart home automation', 'IoT dashboard'],
-        outcomes: [
-          'Научитесь считывать данные с сенсоров и управлять устройствами',
-          'Поймете логику связи между smart-устройствами',
-          'Создадите реальный IoT-прототип для портфолио',
-        ],
-        projects: ['Smart room controller', 'Sensor monitoring system', 'IoT mini dashboard'],
       },
       {
         id: 'ai',
@@ -491,6 +479,22 @@ export const siteContent = {
         ],
         projects: ['Personal portfolio', 'Course landing page', 'Mini CRM app'],
       },
+      {
+        id: 'mobilegraphy',
+        title: 'Мобилография',
+        tag: 'Mobile content',
+        duration: '2 месяца',
+        format: 'Офлайн и онлайн',
+        description:
+          'Практический курс по съемке на смартфон: видео, фото, reels, монтаж, свет, композиция и создание контента.',
+        modules: ['Настройки камеры', 'Композиция и свет', 'Reels и short video', 'Мобильный монтаж'],
+        outcomes: [
+          'Научитесь снимать качественные фото и видео на телефон',
+          'Будете готовить reels, stories и рекламный контент',
+          'Подготовите видео и фото проект для портфолио',
+        ],
+        projects: ['Product reels', 'Personal brand video', 'Mobile photo portfolio'],
+      },
     ]),
     courseDetail: {
       back: 'Вернуться к курсам',
@@ -523,12 +527,6 @@ export const siteContent = {
         description:
           'Быстрые ответы на вопросы учеников, помощь в выборе курса и упрощение консультации.',
         tags: ['AI assistant', 'Automation', 'FAQ'],
-      },
-      {
-        title: 'IoT лабораторная среда',
-        description:
-          'Практические занятия с сенсорами, микроконтроллерами и smart-устройствами.',
-        tags: ['Arduino', 'ESP32', 'Smart devices'],
       },
       {
         title: 'Cyber Lab и безопасная практика',
@@ -598,7 +596,7 @@ export const siteContent = {
       },
     },
     footer: {
-      text: 'Профессиональная, практическая и ethical technology образовательная платформа по кибербезопасности, IoT и искусственному интеллекту.',
+      text: 'Профессиональная, практическая и ethical technology образовательная платформа по кибербезопасности, искусственному интеллекту, робототехнике и программированию.',
       socialAria: 'Социальные сети',
       bot: 'Telegram бот',
       channel: 'Telegram канал',
@@ -646,7 +644,7 @@ export const siteContent = {
       register:
         'Для записи нажмите кнопку Telegram ниже. Бот спросит имя, телефон, курс и формат обучения.',
       advice:
-        'Если интересны безопасность и сети, выбирайте Кибербезопасность. Если нравятся устройства и сенсоры, выбирайте IoT или Робототехнику. Если интересны data и автоматизация, выбирайте AI. Если хотите создавать сайты и приложения, выбирайте Программирование.',
+        'Если интересны безопасность и сети, выбирайте Кибербезопасность. Если нравятся роботы и техника, выбирайте Робототехнику. Если интересны data и автоматизация, выбирайте AI. Если хотите создавать сайты и приложения, выбирайте Программирование.',
       fallback:
         'Я помогаю по курсам HackPro, современным системам, контактам и записи. Напишите вопрос точнее или выберите быструю кнопку.',
     },
@@ -662,7 +660,9 @@ export const siteContent = {
       courses: 'Courses',
       systems: 'Systems',
       pricing: 'Pricing',
+      register: 'Register',
       bot: 'Bot',
+      blog: 'Blog',
       about: 'About',
       advantages: 'Benefits',
       contact: 'Contact',
@@ -671,14 +671,14 @@ export const siteContent = {
       eyebrow: 'Professional technology academy',
       title: 'Learn future technologies with HackPro',
       text:
-        'Practical courses in cybersecurity, IoT and artificial intelligence: real projects, mentor support and a clear roadmap for an IT career.',
+        'Practical courses in cybersecurity, artificial intelligence, robotics and programming: real projects, mentor support and a clear roadmap for an IT career.',
       primary: 'View courses',
       secondary: 'Telegram bot',
       trustAria: 'Platform benefits',
-      trust: ['Ethical cybersecurity', 'Real IoT labs', 'AI project studio'],
+      trust: ['Ethical cybersecurity', 'Robotics lab', 'AI project studio'],
       visualAria: 'HackPro technology platform preview',
-      iotLabel: 'IoT Nodes',
-      iotText: 'connected devices',
+      labLabel: 'Cyber Lab',
+      labText: 'safe practice',
       aiLabel: 'AI Studio',
       aiText: 'model accuracy lab',
     },
@@ -705,22 +705,6 @@ export const siteContent = {
           'You will prepare a security audit project for your portfolio',
         ],
         projects: ['Classroom sandbox audit', 'Secure network checklist', 'Incident response plan'],
-      },
-      {
-        id: 'iot',
-        title: 'IoT - Internet of Things',
-        tag: 'Connected systems',
-        duration: '4 months',
-        format: 'Offline and online',
-        description:
-          'Build projects with smart devices, sensors, microcontrollers, automation, smart home and industrial IoT.',
-        modules: ['Arduino/ESP32 basics', 'Sensors', 'Smart home automation', 'IoT dashboard'],
-        outcomes: [
-          'You will read sensor data and control devices',
-          'You will understand connection logic between smart devices',
-          'You will build a real IoT prototype for your portfolio',
-        ],
-        projects: ['Smart room controller', 'Sensor monitoring system', 'IoT mini dashboard'],
       },
       {
         id: 'ai',
@@ -770,6 +754,22 @@ export const siteContent = {
         ],
         projects: ['Personal portfolio', 'Course landing page', 'Mini CRM app'],
       },
+      {
+        id: 'mobilegraphy',
+        title: 'Mobilegraphy',
+        tag: 'Mobile content',
+        duration: '2 months',
+        format: 'Offline and online',
+        description:
+          'A practical course on professional smartphone video, photography, reels, editing, lighting, composition and content creation.',
+        modules: ['Camera settings', 'Composition and lighting', 'Reels and short video', 'Mobile editing'],
+        outcomes: [
+          'You will shoot quality photos and videos with a smartphone',
+          'You will prepare reels, stories and promotional content',
+          'You will build a video/photo project for your portfolio',
+        ],
+        projects: ['Product reels', 'Personal brand video', 'Mobile photo portfolio'],
+      },
     ]),
     courseDetail: {
       back: 'Back to courses',
@@ -802,12 +802,6 @@ export const siteContent = {
         description:
           'Fast answers to student questions, course selection help and a simpler consultation process.',
         tags: ['AI assistant', 'Automation', 'FAQ'],
-      },
-      {
-        title: 'IoT laboratory environment',
-        description:
-          'Hands-on lab sessions with sensors, microcontrollers and smart devices.',
-        tags: ['Arduino', 'ESP32', 'Smart devices'],
       },
       {
         title: 'Cyber Lab and safe practice',
@@ -877,7 +871,7 @@ export const siteContent = {
       },
     },
     footer: {
-      text: 'A professional, practical and ethical technology education platform for cybersecurity, IoT and artificial intelligence.',
+      text: 'A professional, practical and ethical technology education platform for cybersecurity, artificial intelligence, robotics and programming.',
       socialAria: 'Social links',
       bot: 'Telegram bot',
       channel: 'Telegram channel',
@@ -907,6 +901,7 @@ export const siteContent = {
         'Artificial intelligence course',
         'Robotics course',
         'Programming course',
+        'Mobilegraphy course',
         'Contacts',
       ],
       welcome:
@@ -925,7 +920,7 @@ export const siteContent = {
       register:
         'To register, click the Telegram button below. The bot will ask for your name, phone number, course and learning format.',
       advice:
-        'If you like security and networks, choose Cybersecurity. If you like devices and sensors, choose IoT or Robotics. If you are interested in data and automation, choose AI. If you want to build websites and apps, choose Programming.',
+        'If you like security and networks, choose Cybersecurity. If you like robots and technology, choose Robotics. If you are interested in data and automation, choose AI. If you want to build websites and apps, choose Programming.',
       fallback:
         'I can help with HackPro courses, modern systems, contacts and registration. Please ask more specifically or choose a quick prompt.',
     },

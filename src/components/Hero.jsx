@@ -1,4 +1,5 @@
 import { telegramRegisterUrl } from '../data/siteData.js';
+import CyberScene from './CyberScene.jsx';
 
 export default function Hero({ content }) {
   const { hero } = content;
@@ -26,6 +27,7 @@ export default function Hero({ content }) {
 
       <div className="hero-visual" aria-label={hero.visualAria}>
         <div className="visual-grid" />
+        <CyberScene />
         <div className="dashboard-panel panel-main">
           <div className="panel-header">
             <span />
@@ -45,10 +47,10 @@ export default function Hero({ content }) {
             <span />
           </div>
         </div>
-        <div className="dashboard-panel panel-card panel-iot">
-          <span className="panel-label">{hero.iotLabel}</span>
+        <div className="dashboard-panel panel-card panel-lab">
+          <span className="panel-label">{hero.labLabel}</span>
           <strong>128</strong>
-          <small>{hero.iotText}</small>
+          <small>{hero.labText}</small>
         </div>
         <div className="dashboard-panel panel-card panel-ai">
           <span className="panel-label">{hero.aiLabel}</span>

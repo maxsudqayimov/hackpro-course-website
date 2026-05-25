@@ -9,12 +9,6 @@ export default function About({ content }) {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
-        <div className="about-photo">
-          <picture>
-            <source srcSet="/hackpro-mentor.webp" type="image/webp" />
-            <img src="/hackpro-mentor.png" alt={content.about.imageAlt} loading="lazy" />
-          </picture>
-        </div>
       </div>
     </section>
   );
