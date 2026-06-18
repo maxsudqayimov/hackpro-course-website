@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HackPro Academy - kiberxavfsizlik, sun'iy intellekt, robototexnika, dasturlash, mobilografiya va SMM kurslari.">
     <title>HackPro Academy - Zamonaviy IT Kurslari</title>
+    <script>
+        (function () {
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
+            var isHomePage = location.pathname === '/' || location.pathname === '/index.html';
+            if (isHomePage && !location.hash) {
+                scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>

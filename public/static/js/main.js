@@ -1,5 +1,58 @@
 /* ===== MANGA CYBER SECURITY — MAIN JS ===== */
 
+(function () {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function isHomePage() {
+        return location.pathname === '/' || location.pathname === '/index.html';
+    }
+
+    function shouldStartAtTop() {
+        return isHomePage() && !location.hash;
+    }
+
+    function scrollHomeToTop() {
+        if (!shouldStartAtTop()) {
+            return;
+        }
+
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        document.documentElement.scrollTop = 0;
+        if (document.body) {
+            document.body.scrollTop = 0;
+        }
+    }
+
+    if (!shouldStartAtTop()) {
+        return;
+    }
+
+    var userInteracted = false;
+    var markInteraction = function () {
+        userInteracted = true;
+    };
+    var guardedScrollHomeToTop = function () {
+        if (!userInteracted) {
+            scrollHomeToTop();
+        }
+    };
+
+    [0, 50, 250, 750, 1500, 3000].forEach(function (delay) {
+        setTimeout(guardedScrollHomeToTop, delay);
+    });
+
+    window.addEventListener('load', guardedScrollHomeToTop);
+    window.addEventListener('pageshow', guardedScrollHomeToTop);
+    window.addEventListener('wheel', markInteraction, { passive: true });
+    window.addEventListener('touchstart', markInteraction, { passive: true });
+    window.addEventListener('keydown', markInteraction);
+    window.addEventListener('pointerdown', markInteraction);
+
+    scrollHomeToTop();
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== MATRIX RAIN CANVAS =====
