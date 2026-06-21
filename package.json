@@ -9,9 +9,16 @@
     "bot:direct": "node bot/index.js",
     "bot:dev": "node --watch bot/index.js",
     "build": "vite build",
+    "mobile:sync": "npm run build && npx cap sync",
+    "mobile:android": "npx cap open android",
+    "mobile:ios": "npx cap open ios",
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@capacitor/ios": "^8.4.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "three": "^0.184.0"

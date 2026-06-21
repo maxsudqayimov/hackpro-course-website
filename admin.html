@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HackPro Academy LMS admin panel.">
+    <meta name="theme-color" content="#34f5ff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="HackPro">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>HackPro Admin Panel</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/hackpro-academy-apple-touch.png">
+    <link rel="stylesheet" href="/static/css/lms.css">
+</head>
+<body>
+    <header class="lms-topbar">
+        <a class="lms-brand" href="/">
+            <img src="/static/img/hackpro-logo-transparent.png" alt="HackPro Academy">
+            <span>HackPro Admin</span>
+        </a>
+        <nav>
+            <a href="/platform">Platforma</a>
+            <a href="/">Sayt</a>
+            <button class="ghost-button" id="logoutButton" type="button" hidden>Chiqish</button>
+        </nav>
+    </header>
+
+    <main class="admin-shell">
+        <section class="login-panel" id="loginPanel">
+            <div class="login-copy">
+                <span class="eyebrow">Admin panel</span>
+                <h1>Kurs va darslarni boshqarish</h1>
+                <p>Bu panel faqat administratorlar uchun.</p>
+            </div>
+            <form class="auth-card" id="loginForm">
+                <label>
+                    Login
+                    <input name="login" autocomplete="username" required>
+                </label>
+                <label>
+                    Parol
+                    <input name="password" type="password" autocomplete="current-password" required>
+                </label>
+                <button type="submit">Kirish</button>
+                <p class="form-message" id="loginMessage"></p>
+            </form>
+        </section>
+
+        <section class="admin-grid" id="adminWorkspace" hidden>
+            <div class="admin-panel">
+                <div class="panel-heading">
+                    <span class="eyebrow">Kurslar</span>
+                    <h2>Kurs qo'shish yoki tahrirlash</h2>
+                </div>
+                <form class="stack-form" id="courseForm">
+                    <input type="hidden" name="id">
+                    <label>Kurs nomi<input name="title" required></label>
+                    <label>Slug<input name="slug" placeholder="kiberxavfsizlik"></label>
+                    <label>Daraja<input name="level" placeholder="Boshlang'ich"></label>
+                    <label>Rasm URL<input name="cover_url"></label>
+                    <label>Tartib raqami<input name="sort_order" type="number" value="0"></label>
+                    <label>Izoh<textarea name="description" rows="4"></textarea></label>
+                    <label class="check-row"><input name="is_published" type="checkbox" checked> Saytda ko'rsatish</label>
+                    <button type="submit">Kursni saqlash</button>
+                </form>
+            </div>
+
+            <div class="admin-panel">
+                <div class="panel-heading">
+                    <span class="eyebrow">Darslar</span>
+                    <h2>Dars qo'shish</h2>
+                </div>
+                <form class="stack-form" id="lessonForm">
+                    <input type="hidden" name="id">
+                    <label>Kurs<select name="course_id" required></select></label>
+                    <label>Dars nomi<input name="title" required></label>
+                    <label>Video URL<input name="video_url" placeholder="YouTube, Vimeo yoki mp4 link"></label>
+                    <label>Material URL<input name="resources_url" placeholder="PDF yoki fayl link"></label>
+                    <label>Dars davomiyligi, daqiqa<input name="duration_minutes" type="number" value="0"></label>
+                    <label>Tartib raqami<input name="sort_order" type="number" value="0"></label>
+                    <label>Qisqa izoh<textarea name="description" rows="3"></textarea></label>
+                    <label>Dars matni<textarea name="body" rows="8"></textarea></label>
+                    <label class="check-row"><input name="is_published" type="checkbox" checked> O'quvchiga ko'rsatish</label>
+                    <button type="submit">Darsni saqlash</button>
+                </form>
+            </div>
+
+            <div class="admin-panel">
+                <div class="panel-heading">
+                    <span class="eyebrow">O'quvchilar</span>
+                    <h2>Login-parol berish</h2>
+                </div>
+                <form class="stack-form" id="userForm">
+                    <label>Ism familiya<input name="full_name" required></label>
+                    <label>Login<input name="login" required></label>
+                    <label>Parol<input name="password" type="password" minlength="6" required></label>
+                    <label>Rol<select name="role"><option value="student">O'quvchi</option><option value="admin">Admin</option></select></label>
+                    <label class="check-row"><input name="is_active" type="checkbox" checked> Faol</label>
+                    <button type="submit">Foydalanuvchi yaratish</button>
+                </form>
+            </div>
+
+            <div class="admin-panel course-map">
+                <div class="panel-heading">
+                    <span class="eyebrow">Kontent xaritasi</span>
+                    <h2>Joriy kurs va darslar</h2>
+                </div>
+                <div id="adminCourseList"></div>
+                <p class="form-message" id="adminMessage"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/pwa.js"></script>
+</body>
+</html>
