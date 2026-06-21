@@ -12,3 +12,4 @@ jarvis-desktop/.venv/
 jarvis-desktop/data/
 
 .vercel
+backups/
