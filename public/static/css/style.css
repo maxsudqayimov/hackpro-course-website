@@ -811,8 +811,9 @@ body::before {
 
 .course-meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 10px 18px;
     padding-top: 18px;
     border-top: 1px solid rgba(255,255,255,0.06);
     font-size: 0.8rem;
@@ -823,6 +824,12 @@ body::before {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.course-meta .course-price {
+    width: 100%;
+    color: var(--primary);
+    font-weight: 800;
 }
 
 .course-open {

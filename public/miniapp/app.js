@@ -7,60 +7,96 @@ const courses = [
     category: 'IT',
     icon: '🛡️',
     title: 'Kiberxavfsizlik',
-    duration: '4 oy',
+    lessons: '156 dars',
+    duration: '312 soat',
+    students: "120 o‘quvchi",
+    price: '500 000 so‘m / oy',
     format: 'Online / Offline',
     level: 'Boshlang‘ich',
     color: '#31e7c5',
-    description: 'Ethical hacking, tarmoq xavfsizligi va tizimlarni himoyalashni amaliy laboratoriyalarda o‘rganing.',
-    topics: ['Tarmoq va Linux asoslari', 'Ethical hacking metodlari', 'Web xavfsizligi va OWASP', 'Incident response va himoya'],
-  },
-  {
-    id: 'programming',
-    category: 'IT',
-    icon: '💻',
-    title: 'Dasturlash',
-    duration: '5 oy',
-    format: 'Online / Offline',
-    level: 'Boshlang‘ich',
-    color: '#35a7ff',
-    description: 'Frontend, JavaScript, algoritmlar va real web loyihalar orqali developer ko‘nikmalarini shakllantiring.',
-    topics: ['HTML, CSS va JavaScript', 'React va zamonaviy frontend', 'API va backend asoslari', 'Portfolio uchun real loyiha'],
+    image: '/static/img/course-cybersecurity.png',
+    description: 'Tarmoq, qurilma va akkauntlarni himoya qilish asoslarini amaliy mashg‘ulotlar orqali o‘rganasiz.',
+    topics: ['Internet xavfsizligi, parol va akkaunt himoyasi', 'Tarmoq xavfsizligi va oddiy himoya sozlamalari', 'Zaifliklarni aniqlash va xavfsiz tekshiruv usullari', 'Phishing va ijtimoiy muhandislikdan himoyalanish', 'Amaliy laboratoriya va mini loyiha'],
   },
   {
     id: 'ai',
     category: 'AI',
     icon: '🤖',
     title: 'Sun’iy intellekt',
-    duration: '5 oy',
+    lessons: '75 dars',
+    duration: '150 soat',
+    students: '95 o‘quvchi',
+    price: '200 000 so‘m / oy',
     format: 'Online / Offline',
     level: 'Boshlang‘ich',
     color: '#9d74ff',
-    description: 'AI vositalari, machine learning, data analysis va avtomatlashtirishni amaliy loyihalarda sinab ko‘ring.',
-    topics: ['AI va prompt engineering', 'Python va data analysis', 'Machine learning asoslari', 'AI avtomatlashtirish loyihasi'],
+    image: '/static/img/course-ai.png',
+    description: 'AI vositalaridan to‘g‘ri foydalanish, prompt yozish va ish jarayonlarini avtomatlashtirishni o‘rganasiz.',
+    topics: ['AI nima va undan kundalik ishda qanday foydalaniladi', 'Prompt yozish, natijani tahlil qilish va yaxshilash', 'Matn, rasm va kontent yaratish jarayonlari', 'Oddiy avtomatlashtirish va yordamchi vositalar', 'AI bilan yakuniy amaliy loyiha'],
   },
   {
     id: 'robotics',
     category: 'Engineering',
     icon: '🦾',
     title: 'Robototexnika',
-    duration: '4 oy',
-    format: 'Offline',
+    lessons: '75 dars',
+    duration: '150 soat',
+    students: '68 o‘quvchi',
+    price: '150 000 so‘m / oy',
+    format: 'Online / Offline',
     level: 'Boshlang‘ich',
     color: '#ffb84a',
-    description: 'Sensor, motor va controllerlar bilan ishlashni o‘rganib, o‘z robot loyihangizni yarating.',
-    topics: ['Elektronika asoslari', 'Arduino va controllerlar', 'Sensor va motorlar', 'Mustaqil robot loyihasi'],
+    image: '/static/img/course-robotics.png',
+    description: 'Robot qurilmalarini yig‘ish, sensor va motorlar bilan ishlash hamda mikrokontroller orqali boshqarishni o‘rganasiz.',
+    topics: ['Robototexnika asoslari va qurilma qismlari', 'Sensorlar, motorlar va boshqaruv modullari', 'Mikrokontroller bilan oddiy dasturlash', 'Robot harakati va avtomatik boshqaruv', 'Yakuniy robot loyiha yig‘ish'],
   },
   {
-    id: 'iot',
-    category: 'Engineering',
-    icon: '🔌',
-    title: 'IoT — Smart qurilmalar',
-    duration: '4 oy',
+    id: 'programming',
+    category: 'IT',
+    icon: '💻',
+    title: 'Dasturlash',
+    lessons: '132 dars',
+    duration: '264 soat',
+    students: '82 o‘quvchi',
+    price: '200 000 so‘m / oy',
     format: 'Online / Offline',
-    level: 'O‘rta',
+    level: 'Boshlang‘ich',
+    color: '#35a7ff',
+    image: '/static/img/course-programming.png',
+    description: 'Web dasturlash asoslari, algoritmik fikrlash va real loyiha yaratish bosqichlarini o‘rganasiz.',
+    topics: ['HTML, CSS va JavaScript asoslari', 'Interaktiv sahifalar va responsiv dizayn', 'Algoritmik fikrlash va kod tuzilmasi', 'Backend bilan ishlashga kirish', 'Portfolio uchun web loyiha'],
+  },
+  {
+    id: 'mobilography',
+    category: 'Media',
+    icon: '📱',
+    title: 'Mobilografiya',
+    lessons: '36 dars',
+    duration: '72 soat',
+    students: '110 o‘quvchi',
+    price: '150 000 so‘m / oy',
+    format: 'Online / Offline',
+    level: 'Boshlang‘ich',
     color: '#ff6f91',
-    description: 'ESP32, sensorlar, smart home va internetga ulangan qurilmalar bilan real tizimlar yarating.',
-    topics: ['IoT arxitekturasi', 'ESP32 va sensorlar', 'MQTT va bulut xizmatlari', 'Smart home loyihasi'],
+    image: '/static/img/course-mobilography.png',
+    description: 'Smartfon orqali sifatli video olish, kadr tanlash, yoritish, montaj va kontent tayyorlashni o‘rganasiz.',
+    topics: ['Telefon kamerasi sozlamalari va kompozitsiya', 'Yoritish, rakurs va kadr bilan ishlash', 'Video olish va ovoz sifatini yaxshilash', 'Mobil montaj, rang va dinamika', 'Reels, shorts va portfolio kontent tayyorlash'],
+  },
+  {
+    id: 'smm',
+    category: 'Media',
+    icon: '📣',
+    title: 'SMM',
+    lessons: '36 dars',
+    duration: '72 soat',
+    students: '55 o‘quvchi',
+    price: '150 000 so‘m / oy',
+    format: 'Online / Offline',
+    level: 'Boshlang‘ich',
+    color: '#ff8f3d',
+    image: '/static/img/course-smm.png',
+    description: 'Brend sahifasini yuritish, kontent reja tuzish, auditoriyani tahlil qilish va reklama strategiyasini ishlab chiqishni o‘rganasiz.',
+    topics: ['SMM strategiya va auditoriya tahlili', 'Kontent reja, rubrika va post g‘oyalari', 'Instagram va Telegram sahifalarini rivojlantirish', 'Reklama matni, kreativ va natija tahlili', 'Sahifa uchun amaliy SMM loyiha'],
   },
 ];
 
@@ -82,22 +118,22 @@ function setTelegramUi() {
 
   telegram.ready();
   telegram.expand();
-  telegram.setHeaderColor?.('#07111f');
-  telegram.setBackgroundColor?.('#07111f');
+  telegram.setHeaderColor?.('#020712');
+  telegram.setBackgroundColor?.('#020712');
   statusBadge.textContent = 'Telegram';
 }
 
 function courseCard(course, compact = false) {
   if (compact) {
     return `<article class="mini-course" data-course-id="${course.id}" style="--course-color:${course.color}" tabindex="0" role="button">
-      <span class="course-glow"></span><span class="course-icon">${course.icon}</span>
-      <h3>${course.title}</h3><p>${course.description}</p><footer><span>${course.duration}</span><span>${course.level}</span></footer>
+      <span class="course-glow"></span><div class="course-cover"><img src="${course.image}" alt="" loading="lazy" /><span class="course-icon">${course.icon}</span></div>
+      <h3>${course.title}</h3><p>${course.description}</p><footer><span>${course.lessons}</span><span>${course.duration}</span></footer><strong class="course-price">${course.price}</strong>
     </article>`;
   }
 
   return `<article class="course-card" data-course-id="${course.id}" style="--course-color:${course.color}" tabindex="0" role="button">
-    <span class="course-glow"></span><span class="course-icon">${course.icon}</span>
-    <div><h2>${course.title}</h2><p>${course.description}</p><footer><span>${course.duration}</span><span>${course.format}</span></footer></div>
+    <span class="course-glow"></span><div class="course-thumbnail"><img src="${course.image}" alt="" loading="lazy" /><span class="course-icon">${course.icon}</span></div>
+    <div><h2>${course.title}</h2><p>${course.description}</p><footer><span>${course.lessons}</span><span>${course.duration}</span><span>${course.students}</span></footer><strong class="course-price">${course.price}</strong></div>
     <span class="course-arrow">›</span>
   </article>`;
 }
@@ -173,8 +209,8 @@ function renderCourse() {
   app.replaceChildren(cloneTemplate('#courseTemplate'));
   const detail = app.querySelector('#courseDetail');
   detail.style.setProperty('--course-color', course.color);
-  detail.innerHTML = `<div class="detail-hero"><span class="course-glow"></span><span class="course-icon">${course.icon}</span><h1>${course.title}</h1><p>${course.description}</p></div>
-    <div class="detail-grid"><div><strong>${course.duration}</strong><span>Davomiyligi</span></div><div><strong>${course.format}</strong><span>Format</span></div><div><strong>${course.level}</strong><span>Daraja</span></div></div>
+  detail.innerHTML = `<div class="detail-hero"><span class="course-glow"></span><img class="detail-course-image" src="${course.image}" alt="${course.title} kursi" /><span class="course-icon">${course.icon}</span><h1>${course.title}</h1><p>${course.description}</p></div>
+    <div class="detail-grid"><div><strong>${course.lessons}</strong><span>Darslar</span></div><div><strong>${course.duration}</strong><span>Davomiyligi</span></div><div><strong>${course.price}</strong><span>Narxi</span></div><div><strong>${course.format}</strong><span>Format</span></div><div><strong>${course.students}</strong><span>O‘quvchilar</span></div><div><strong>${course.level}</strong><span>Daraja</span></div></div>
     <section class="detail-section"><h2>Kursda nimalar o‘rganiladi?</h2><ul class="topic-list">${course.topics.map((topic) => `<li><i>✓</i><span>${topic}</span></li>`).join('')}</ul></section>
     <button class="primary-button full-width" type="button" data-action="register">Shu kursga yozilish</button>`;
   bindCommonActions();
