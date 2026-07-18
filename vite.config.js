@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import leadHandler from './api/lead.js';
-import lmsHandler from './api/lms.js';
 import { fileURLToPath } from 'node:url';
 
 function localApi(path, handler) {
@@ -16,14 +15,13 @@ function localApi(path, handler) {
 }
 
 export default defineConfig({
-  plugins: [localApi('/api/lead', leadHandler), localApi('/api/lms', lmsHandler), react()],
+  plugins: [localApi('/api/lead', leadHandler), react()],
   build: {
     rollupOptions: {
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         course: fileURLToPath(new URL('./course.html', import.meta.url)),
-        platform: fileURLToPath(new URL('./platform.html', import.meta.url)),
-        admin: fileURLToPath(new URL('./admin.html', import.meta.url)),
+        miniapp: fileURLToPath(new URL('./miniapp.html', import.meta.url)),
       },
     },
   },

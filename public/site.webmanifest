@@ -1,43 +1,17 @@
 {
-  "id": "/platform",
-  "name": "HackPro Academy Platforma",
+  "name": "HackPro",
   "short_name": "HackPro",
-  "description": "HackPro Academy onlayn kurslari va o'quvchi kabineti",
-  "start_url": "/platform",
-  "scope": "/",
+  "description": "HackPro - kelajak texnologiyalari kurslari",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#020617",
   "theme_color": "#34f5ff",
-  "categories": ["education", "productivity"],
   "icons": [
     {
-      "src": "/static/img/hackpro-academy-icon.png",
+      "src": "/favicon.svg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "/hackpro-academy-apple-touch.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Platforma",
-      "short_name": "Platforma",
-      "description": "O'quvchi kabinetini ochish",
-      "url": "/platform",
-      "icons": [{ "src": "/static/img/hackpro-academy-icon.png", "sizes": "512x512", "type": "image/png" }]
-    },
-    {
-      "name": "Admin panel",
-      "short_name": "Admin",
-      "description": "Kurs va darslarni boshqarish",
-      "url": "/admin",
-      "icons": [{ "src": "/static/img/hackpro-academy-icon.png", "sizes": "512x512", "type": "image/png" }]
     }
   ]
 }

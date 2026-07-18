@@ -56,14 +56,6 @@ function setMeta(selector, attribute, value) {
   }
 }
 
-function isHomeRoute() {
-  return window.location.pathname === '/' || window.location.pathname === '/index.html';
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-}
-
 export default function App() {
   const [language, setLanguage] = useState(getInitialLanguage);
   const content = useMemo(() => getSiteContent(language), [language]);
@@ -84,7 +76,7 @@ export default function App() {
 
       requestAnimationFrame(() => {
         if (course || blog) {
-          scrollToTop();
+          window.scrollTo(0, 0);
           return;
         }
 
@@ -92,10 +84,7 @@ export default function App() {
         const target = targetId ? document.getElementById(targetId) : null;
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          return;
         }
-
-        scrollToTop();
       });
     };
 
@@ -116,45 +105,6 @@ export default function App() {
   }, [content.blogPosts, content.courses, language]);
 
   useEffect(() => {
-    if (!isHomeRoute() || window.location.hash) {
-      return undefined;
-    }
-
-    let userInteracted = false;
-    const markInteraction = () => {
-      userInteracted = true;
-    };
-    const guardedScrollToTop = () => {
-      if (!userInteracted && isHomeRoute() && !window.location.hash) {
-        scrollToTop();
-      }
-    };
-
-    const timers = [0, 50, 250, 750, 1500, 7800].map((delay) =>
-      window.setTimeout(guardedScrollToTop, delay),
-    );
-
-    window.addEventListener('load', guardedScrollToTop);
-    window.addEventListener('pageshow', guardedScrollToTop);
-    window.addEventListener('wheel', markInteraction, { passive: true });
-    window.addEventListener('touchstart', markInteraction, { passive: true });
-    window.addEventListener('keydown', markInteraction);
-    window.addEventListener('pointerdown', markInteraction);
-
-    guardedScrollToTop();
-
-    return () => {
-      timers.forEach((timer) => window.clearTimeout(timer));
-      window.removeEventListener('load', guardedScrollToTop);
-      window.removeEventListener('pageshow', guardedScrollToTop);
-      window.removeEventListener('wheel', markInteraction);
-      window.removeEventListener('touchstart', markInteraction);
-      window.removeEventListener('keydown', markInteraction);
-      window.removeEventListener('pointerdown', markInteraction);
-    };
-  }, []);
-
-  useEffect(() => {
     const title = activeCourse?.seoTitle || activeBlog?.seoTitle || content.seo.title;
     const description = activeCourse?.seoDescription || activeBlog?.seoDescription || content.seo.description;
     const canonicalPath = activeCourse?.path || activeBlog?.path || '/';
@@ -172,8 +122,8 @@ export default function App() {
 
   useEffect(() => {
     if (activeCourse || activeBlog) {
-      scrollToTop();
-      requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => window.scrollTo(0, 0));
     }
   }, [activeBlog, activeCourse]);
 
