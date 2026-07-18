@@ -209,6 +209,34 @@ async function answerCallback(callbackQueryId) {
   return api('answerCallbackQuery', { callback_query_id: callbackQueryId });
 }
 
+async function configureMiniAppMenuButton() {
+  if (!miniAppUrl) {
+    console.warn('MINI_APP_URL berilmagan. Telegram pastki Mini App tugmasi sozlanmadi.');
+    return;
+  }
+
+  let parsedUrl;
+  try {
+    parsedUrl = new URL(miniAppUrl);
+  } catch {
+    throw new Error('MINI_APP_URL to\u2018g\u2018ri URL emas. Masalan: https://hackpro.uz/miniapp');
+  }
+
+  if (parsedUrl.protocol !== 'https:') {
+    throw new Error('Telegram Mini App uchun MINI_APP_URL https:// bilan boshlanishi kerak.');
+  }
+
+  await api('setChatMenuButton', {
+    menu_button: {
+      type: 'web_app',
+      text: 'Mini App',
+      web_app: { url: miniAppUrl },
+    },
+  });
+
+  console.log(`Telegram pastki Mini App tugmasi sozlandi: ${miniAppUrl}`);
+}
+
 async function notifyAdmins(lead) {
   if (adminChatIds.length === 0) {
     console.warn('ADMIN_CHAT_ID berilmagan. Ariza faqat leads.json fayliga saqlandi.');
@@ -1049,6 +1077,7 @@ async function poll() {
 
   await api('deleteWebhook', { drop_pending_updates: false });
   await api('setMyCommands', { commands: botCommands });
+  await configureMiniAppMenuButton();
   console.log(`${center.name} Telegram bot ishga tushdi. Offset: ${offset || 'new'}`);
 
   while (true) {
