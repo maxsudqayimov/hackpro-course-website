@@ -195,6 +195,15 @@ async function sendMessage(chatId, text, extra = {}) {
   });
 }
 
+async function sendPhoto(chatId, photo, caption, extra = {}) {
+  return api('sendPhoto', {
+    chat_id: chatId,
+    photo,
+    caption,
+    ...extra,
+  });
+}
+
 async function editMessage(chatId, messageId, text, extra = {}) {
   return api('editMessageText', {
     chat_id: chatId,
@@ -271,7 +280,7 @@ async function notifyAdminsAboutInquiry(inquiry) {
   });
 }
 
-async function showHome(chatId, messageId) {
+async function showHome(chatId, messageId, { withLogo = false } = {}) {
   const text = [
     `Assalomu alaykum! ${center.name} botiga xush kelibsiz.`,
     '',
@@ -283,6 +292,8 @@ async function showHome(chatId, messageId) {
   const payload = { reply_markup: mainMenuKeyboard() };
   if (messageId) {
     await editMessage(chatId, messageId, text, payload);
+  } else if (withLogo && center.logoUrl) {
+    await sendPhoto(chatId, center.logoUrl, text, payload);
   } else {
     await sendMessage(chatId, text, payload);
   }
@@ -359,7 +370,7 @@ async function showCourses(chatId, messageId) {
     '',
     ...center.courses.map(
       (course, index) =>
-        `${index + 1}. ${course.icon} ${course.title}\nMuddat: ${course.duration}\nFormat: ${course.format}`,
+        `${index + 1}. ${course.icon} ${course.title}\n📚 ${course.lessons} · ⏱ ${course.duration}\n💳 ${course.price}\n👥 ${course.students} · ${course.format}`,
     ),
     '',
     "Batafsil ma'lumot olish uchun kursni tanlang.",
@@ -510,8 +521,14 @@ async function showCourse(chatId, messageId, courseId) {
       '',
       course.description,
       '',
-      `Muddat: ${course.duration}`,
-      `Format: ${course.format}`,
+      `📚 Darslar: ${course.lessons}`,
+      `⏱ Davomiyligi: ${course.duration}`,
+      `💳 Narxi: ${course.price}`,
+      `👥 O'quvchilar: ${course.students}`,
+      `🏫 Format: ${course.format}`,
+      '',
+      "Kursda o'rganasiz:",
+      ...(course.topics || []).map((topic) => `• ${topic}`),
     ].join('\n'),
     {
       reply_markup: {
@@ -956,7 +973,7 @@ async function handleMessage(message) {
       return;
     }
 
-    await showHome(chatId);
+    await showHome(chatId, null, { withLogo: true });
     return;
   }
 
