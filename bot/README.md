@@ -23,6 +23,7 @@ Bu bot HackPro o'quv markazi uchun:
 ```env
 TELEGRAM_BOT_TOKEN=123456789:replace-with-your-token
 ADMIN_CHAT_ID=123456789
+MINI_APP_URL=https://hackpro.uz/miniapp
 ```
 
 3. Botni supervisor bilan ishga tushiring:
@@ -52,6 +53,7 @@ npm run bot:dev
 - `/id` - chat ID ni ko'rish
 - `/leads` - oxirgi 10 ta ariza, faqat admin
 - `/stats` - arizalar statistikasi, faqat admin
+- `/app` - HackPro Mini App oynasini ochish
 
 ## Eslatma
 

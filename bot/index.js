@@ -13,6 +13,7 @@ loadEnv();
 
 const token = getRequiredEnv('TELEGRAM_BOT_TOKEN');
 const adminChatIds = getAdminChatIds();
+const miniAppUrl = String(process.env.MINI_APP_URL || '').trim();
 const apiBase = `https://api.telegram.org/bot${token}`;
 const sessions = new Map();
 const requestTimeoutMs = Number(process.env.TELEGRAM_REQUEST_TIMEOUT_MS || 60000);
@@ -24,22 +25,29 @@ const botCommands = [
   { command: 'register', description: 'Kursga yozilish' },
   { command: 'ask', description: 'Adminga savol yuborish' },
   { command: 'contact', description: 'Kontaktlar' },
+  { command: 'app', description: 'HackPro Mini App' },
   { command: 'help', description: 'Yordam' },
   { command: 'id', description: 'Chat ID ni ko‘rish' },
 ];
 
 function mainMenuKeyboard() {
+  const rows = [
+    [{ text: '📚 Kurslar', callback_data: 'menu:courses' }],
+    [{ text: '📖 Darsliklar', callback_data: 'menu:lessons' }],
+    [{ text: '🌐 Sayt haqida', callback_data: 'menu:website' }],
+    [{ text: '⚙️ Zamonaviy tizimlar', callback_data: 'menu:systems' }],
+    [{ text: "📝 Ro'yxatdan o'tish", callback_data: 'register:start' }],
+    [{ text: '💬 Admin bilan aloqa', callback_data: 'inquiry:start' }],
+    [{ text: '❓ Savol-javob', callback_data: 'menu:faq' }],
+    [{ text: '📞 Kontaktlar', callback_data: 'menu:contact' }],
+  ];
+
+  if (miniAppUrl) {
+    rows.unshift([{ text: '⚡ HackPro Mini App', web_app: { url: miniAppUrl } }]);
+  }
+
   return {
-    inline_keyboard: [
-      [{ text: '📚 Kurslar', callback_data: 'menu:courses' }],
-      [{ text: '📖 Darsliklar', callback_data: 'menu:lessons' }],
-      [{ text: '🌐 Sayt haqida', callback_data: 'menu:website' }],
-      [{ text: '⚙️ Zamonaviy tizimlar', callback_data: 'menu:systems' }],
-      [{ text: "📝 Ro'yxatdan o'tish", callback_data: 'register:start' }],
-      [{ text: '💬 Admin bilan aloqa', callback_data: 'inquiry:start' }],
-      [{ text: '❓ Savol-javob', callback_data: 'menu:faq' }],
-      [{ text: '📞 Kontaktlar', callback_data: 'menu:contact' }],
-    ],
+    inline_keyboard: rows,
   };
 }
 
@@ -250,6 +258,71 @@ async function showHome(chatId, messageId) {
   } else {
     await sendMessage(chatId, text, payload);
   }
+}
+
+async function showMiniApp(chatId) {
+  if (!miniAppUrl) {
+    await sendMessage(
+      chatId,
+      'Mini App manzili hali sozlanmagan. Administrator .env fayliga MINI_APP_URL qiymatini qo‘shishi kerak.',
+    );
+    return;
+  }
+
+  await sendMessage(
+    chatId,
+    'HackPro Mini App orqali kurslarni ko‘ring va bir necha soniyada ro‘yxatdan o‘ting.',
+    {
+      reply_markup: {
+        inline_keyboard: [[{ text: '⚡ Mini Appni ochish', web_app: { url: miniAppUrl } }]],
+      },
+    },
+  );
+}
+
+async function handleMiniAppData(message) {
+  let payload;
+  try {
+    payload = JSON.parse(message.web_app_data?.data || '{}');
+  } catch {
+    await sendMessage(message.chat.id, 'Mini App ma’lumotini o‘qib bo‘lmadi. Qayta urinib ko‘ring.');
+    return;
+  }
+
+  if (payload.action !== 'register') {
+    await sendMessage(message.chat.id, 'Mini Appdan noma’lum amal qabul qilindi.');
+    return;
+  }
+
+  const name = String(payload.name || '').trim().slice(0, 160);
+  const phone = String(payload.phone || '').trim().slice(0, 80);
+  const course = String(payload.course || '').trim().slice(0, 160);
+  const format = String(payload.format || '').trim().slice(0, 80);
+  const note = String(payload.message || '').trim().slice(0, 800);
+
+  if (name.length < 2 || phone.length < 7 || !course) {
+    await sendMessage(message.chat.id, 'Ariza ma’lumotlari to‘liq emas. Mini App formasini qayta to‘ldiring.');
+    return;
+  }
+
+  const savedLead = await saveLead({
+    chatId: message.chat.id,
+    telegramName: userLabel(message.from),
+    username: message.from?.username || '',
+    name,
+    phone,
+    course,
+    format,
+    note,
+    source: 'telegram-mini-app',
+  });
+
+  await notifyAdmins(savedLead);
+  await sendMessage(
+    message.chat.id,
+    `Arizangiz qabul qilindi, ${name.split(' ')[0]}! HackPro administratori tez orada siz bilan bog‘lanadi.`,
+    { reply_markup: mainMenuKeyboard() },
+  );
 }
 
 async function showCourses(chatId, messageId) {
@@ -835,6 +908,11 @@ async function handleMessage(message) {
   const chatId = message.chat.id;
   const text = message.text?.trim();
 
+  if (message.web_app_data?.data) {
+    await handleMiniAppData(message);
+    return;
+  }
+
   if (await continueRegistration(chatId, message)) {
     return;
   }
@@ -889,6 +967,11 @@ async function handleMessage(message) {
     return;
   }
 
+  if (text === '/app' || text === '/miniapp') {
+    await showMiniApp(chatId);
+    return;
+  }
+
   if (text === '/ask') {
     await startInquiry(chatId, message.from);
     return;
@@ -917,6 +1000,7 @@ async function handleMessage(message) {
         "/register - 📝 ro'yxatdan o'tish",
         '/ask - 💬 adminga savol yuborish',
         '/contact - 📞 kontaktlar',
+        '/app - ⚡ HackPro Mini App',
         '/id - 🆔 chat ID ni ko\'rish',
         '/cancel - ✖️ jarayonni bekor qilish',
       ].join('\n'),

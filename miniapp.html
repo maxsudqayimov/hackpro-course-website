@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07111f" />
+    <meta name="description" content="HackPro kurslarini Telegram ichida tanlang va ro‘yxatdan o‘ting." />
+    <title>HackPro Mini App</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/miniapp/styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <header class="topbar">
+        <button class="icon-button back-button" id="backButton" type="button" aria-label="Orqaga" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7" /></svg>
+        </button>
+        <a class="brand" href="#home" aria-label="HackPro bosh sahifasi">
+          <span class="brand-mark">H</span>
+          <span><strong>HackPro</strong><small>Academy</small></span>
+        </a>
+        <span class="telegram-status" id="telegramStatus">Mini App</span>
+      </header>
+
+      <main id="app" aria-live="polite"></main>
+
+      <nav class="bottom-nav" id="bottomNav" aria-label="Asosiy navigatsiya">
+        <button class="nav-item active" type="button" data-route="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V21h-6v-6H9v6H3z" /></svg>
+          <span>Bosh sahifa</span>
+        </button>
+        <button class="nav-item" type="button" data-route="courses">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zm0 0v15A2.5 2.5 0 0 1 6.5 18H20" /></svg>
+          <span>Kurslar</span>
+        </button>
+        <button class="nav-item" type="button" data-route="register">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          <span>Ro‘yxatdan o‘tish</span>
+        </button>
+      </nav>
+    </div>
+
+    <template id="homeTemplate">
+      <section class="page home-page">
+        <div class="hero-card">
+          <div class="hero-grid"></div>
+          <div class="hero-copy">
+            <span class="eyebrow"><i></i> Kelajak kasblari shu yerdan boshlanadi</span>
+            <h1>Texnologiyani<br /><em>amalda o‘rganing.</em></h1>
+            <p>Kiberxavfsizlik, dasturlash, AI va robototexnika bo‘yicha mentor bilan amaliy kurslar.</p>
+            <div class="hero-actions">
+              <button class="primary-button" type="button" data-action="courses">Kurslarni ko‘rish</button>
+              <button class="ghost-button" type="button" data-action="register">Bepul maslahat</button>
+            </div>
+          </div>
+          <div class="hero-orbit" aria-hidden="true">
+            <span class="orbit-core">HP</span>
+            <span class="orbit-ring ring-one"></span>
+            <span class="orbit-ring ring-two"></span>
+            <span class="orbit-dot dot-one"></span>
+            <span class="orbit-dot dot-two"></span>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article><strong>100+</strong><span>o‘quvchi</span></article>
+          <article><strong>5</strong><span>yo‘nalish</span></article>
+          <article><strong>80%</strong><span>amaliyot</span></article>
+        </div>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div><span class="eyebrow simple">Mashhur yo‘nalishlar</span><h2>O‘zingizga mos kursni tanlang</h2></div>
+            <button class="text-button" type="button" data-action="courses">Barchasi</button>
+          </div>
+          <div class="featured-courses" id="featuredCourses"></div>
+        </section>
+
+        <section class="consult-card">
+          <span class="consult-icon">↗</span>
+          <div><span class="eyebrow simple">Bepul konsultatsiya</span><h2>Qaysi kursni tanlashni bilmayapsizmi?</h2><p>Ariza qoldiring — mentor sizga mos yo‘nalishni tavsiya qiladi.</p></div>
+          <button class="primary-button full-width" type="button" data-action="register">Maslahat olish</button>
+        </section>
+      </section>
+    </template>
+
+    <template id="coursesTemplate">
+      <section class="page">
+        <div class="page-intro"><span class="eyebrow simple">HackPro kurslari</span><h1>Kelajagingiz uchun<br /><em>yo‘nalish tanlang.</em></h1><p>Har bir kurs real loyihalar, mentor yordami va amaliy laboratoriyalar asosida tuzilgan.</p></div>
+        <div class="filter-row" id="courseFilters"></div>
+        <div class="course-list" id="courseList"></div>
+      </section>
+    </template>
+
+    <template id="courseTemplate">
+      <section class="page course-detail" id="courseDetail"></section>
+    </template>
+
+    <template id="registerTemplate">
+      <section class="page register-page">
+        <div class="page-intro compact"><span class="eyebrow simple">Bir qadam qoldi</span><h1>Kursga <em>ro‘yxatdan o‘ting.</em></h1><p>Ma’lumotlaringizni yuboring. HackPro administratori tez orada siz bilan bog‘lanadi.</p></div>
+        <form class="register-form" id="registerForm" novalidate>
+          <label class="field"><span>Ism va familiya</span><input type="text" name="name" autocomplete="name" placeholder="Ismingizni kiriting" minlength="2" required /></label>
+          <label class="field"><span>Telefon raqam</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+998 90 123 45 67" required /></label>
+          <label class="field"><span>Kurs yo‘nalishi</span><select name="course" required><option value="">Kursni tanlang</option></select></label>
+          <fieldset class="field format-field"><legend>O‘qish formati</legend><div class="segmented"><label><input type="radio" name="format" value="Offline" checked /><span>Offline</span></label><label><input type="radio" name="format" value="Online" /><span>Online</span></label><label><input type="radio" name="format" value="Farqi yo‘q" /><span>Farqi yo‘q</span></label></div></fieldset>
+          <label class="field"><span>Qo‘shimcha izoh <small>(ixtiyoriy)</small></span><textarea name="message" rows="3" placeholder="Savolingiz yoki qulay vaqtni yozing"></textarea></label>
+          <div class="form-notice" id="formNotice" hidden></div>
+          <button class="primary-button submit-button" type="submit"><span>Arizani yuborish</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14-7-4 14-3-5z" /></svg></button>
+          <p class="privacy-note">Yuborish orqali ma’lumotlaringiz HackPro administratori bilan bog‘lanish uchun ishlatilishiga rozilik bildirasiz.</p>
+        </form>
+      </section>
+    </template>
+
+    <template id="successTemplate">
+      <section class="page success-page">
+        <div class="success-icon"><span>✓</span></div>
+        <span class="eyebrow simple">Ariza qabul qilindi</span>
+        <h1>Rahmat, <em id="successName">do‘stimiz!</em></h1>
+        <p>Administratorimiz tez orada siz bilan bog‘lanadi. Telegram oynasini yopishingiz mumkin.</p>
+        <button class="primary-button full-width" id="closeAppButton" type="button">Telegramga qaytish</button>
+        <button class="ghost-button full-width" type="button" data-action="home">Bosh sahifaga qaytish</button>
+      </section>
+    </template>
+
+    <script type="module" src="/miniapp/app.js"></script>
+  </body>
+</html>

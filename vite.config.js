@@ -21,6 +21,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         course: fileURLToPath(new URL('./course.html', import.meta.url)),
+        miniapp: fileURLToPath(new URL('./miniapp.html', import.meta.url)),
       },
     },
   },
