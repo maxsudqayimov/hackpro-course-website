@@ -1,0 +1,61 @@
+services:
+  api:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    command: ["node", "src/api.mjs"]
+    env_file: .env
+    environment:
+      DATABASE_PATH: /data/hackpro.sqlite
+      BACKEND_PORT: 8787
+    volumes:
+      - hackpro-data:/data
+    ports:
+      - "127.0.0.1:8787:8787"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/api/v1/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  worker:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    command: ["node", "src/worker.mjs"]
+    user: "0:0"
+    env_file: .env
+    environment:
+      DATABASE_PATH: /data/hackpro.sqlite
+    volumes:
+      - hackpro-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      api:
+        condition: service_healthy
+
+  lab-gateway:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    command: ["node", "src/lab-gateway.mjs"]
+    env_file: .env
+    environment:
+      DATABASE_PATH: /data/hackpro.sqlite
+      LAB_GATEWAY_PORT: 8790
+      LAB_UPSTREAM_HOST: 127.0.0.1
+    volumes:
+      - hackpro-data:/data
+    network_mode: host
+    depends_on:
+      api:
+        condition: service_healthy
+
+  lab-station:
+    image: hackpro/lab-station:local
+    build:
+      context: ./backend/labs/web-basics
+    profiles: ["lab-image"]
+
+volumes:
+  hackpro-data:

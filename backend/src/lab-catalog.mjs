@@ -1,0 +1,66 @@
+export const labCatalog = Object.freeze([
+  {
+    id: 'web-basics',
+    title: 'Web himoya sarlavhalari',
+    category: 'Web Security',
+    difficulty: 'Boshlang‘ich',
+    minutes: 20,
+    xp: 120,
+    description: 'HTTP javobini tekshirib, yetishmayotgan himoya sarlavhasini aniqlang.',
+    mode: 'Terminal + savol',
+  },
+  {
+    id: 'log-investigation',
+    title: 'Shubhali login izlari',
+    category: 'Forensics',
+    difficulty: 'O‘rta',
+    minutes: 25,
+    xp: 160,
+    description: 'Xavfsiz autentifikatsiya logidan noodatiy manbani toping va hodisani qayd eting.',
+    mode: 'Log tahlili',
+  },
+  {
+    id: 'linux-permissions',
+    title: 'Linux fayl huquqlari',
+    category: 'Linux',
+    difficulty: 'Boshlang‘ich',
+    minutes: 18,
+    xp: 110,
+    description: 'Maxfiy konfiguratsiya fayli uchun ortiqcha ruxsatlarni xavfsiz holatga keltiring.',
+    mode: 'Terminal',
+  },
+  {
+    id: 'container-health',
+    title: 'Container health check',
+    category: 'Docker',
+    difficulty: 'O‘rta',
+    minutes: 22,
+    xp: 150,
+    description: 'Ishlayotgandek ko‘ringan, ammo so‘rov qabul qilmayotgan servis sababini aniqlang.',
+    mode: 'Diagnostika',
+  },
+  {
+    id: 'cicd-guard',
+    title: 'CI/CD xavfsizlik darvozasi',
+    category: 'DevOps',
+    difficulty: 'O‘rta',
+    minutes: 25,
+    xp: 170,
+    description: 'Pipeline bosqichlarini tahlil qilib, deploy oldidan bajarilishi shart bo‘lgan tekshiruvni toping.',
+    mode: 'Pipeline tahlili',
+  },
+  {
+    id: 'k8s-recovery',
+    title: 'Kubernetes pod tiklash',
+    category: 'Kubernetes',
+    difficulty: 'Qiyin',
+    minutes: 30,
+    xp: 220,
+    description: 'Pod holati, event va loglarni o‘qib, trafikni sog‘lom podga yo‘naltiradigan sozlamani aniqlang.',
+    mode: 'K8s poligon',
+  },
+]);
+
+export function getLabTemplate(id) {
+  return labCatalog.find((template) => template.id === id) || null;
+}
