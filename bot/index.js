@@ -25,7 +25,7 @@ const botCommands = [
   { command: 'register', description: 'Kursga yozilish' },
   { command: 'ask', description: 'Adminga savol yuborish' },
   { command: 'contact', description: 'Kontaktlar' },
-  { command: 'app', description: 'HackPro Mini App' },
+  { command: 'app', description: 'HackPro ilovasi' },
   { command: 'help', description: 'Yordam' },
   { command: 'id', description: 'Chat ID ni ko‘rish' },
 ];
@@ -43,7 +43,7 @@ function mainMenuKeyboard() {
   ];
 
   if (miniAppUrl) {
-    rows.unshift([{ text: '⚡ HackPro Mini App', web_app: { url: miniAppUrl } }]);
+    rows.unshift([{ text: '⚡ HackPro', web_app: { url: miniAppUrl } }]);
   }
 
   return {
@@ -238,7 +238,7 @@ async function configureMiniAppMenuButton() {
   await api('setChatMenuButton', {
     menu_button: {
       type: 'web_app',
-      text: 'Mini App',
+      text: 'HackPro',
       web_app: { url: miniAppUrl },
     },
   });
@@ -313,7 +313,7 @@ async function showMiniApp(chatId) {
     'HackPro Mini App orqali kurslarni ko‘ring va bir necha soniyada ro‘yxatdan o‘ting.',
     {
       reply_markup: {
-        inline_keyboard: [[{ text: '⚡ Mini Appni ochish', web_app: { url: miniAppUrl } }]],
+        inline_keyboard: [[{ text: '⚡ HackProni ochish', web_app: { url: miniAppUrl } }]],
       },
     },
   );
@@ -836,9 +836,23 @@ async function showAdminStats(chatId) {
 async function handleCallback(callbackQuery) {
   await answerCallback(callbackQuery.id);
 
-  const chatId = callbackQuery.message.chat.id;
-  const messageId = callbackQuery.message.message_id;
+  const sourceMessage = callbackQuery.message;
+  const chatId = sourceMessage.chat.id;
+  let messageId = sourceMessage.message_id;
   const data = callbackQuery.data || '';
+
+  if (!sourceMessage.text) {
+    try {
+      await api('editMessageReplyMarkup', {
+        chat_id: chatId,
+        message_id: sourceMessage.message_id,
+        reply_markup: { inline_keyboard: [] },
+      });
+    } catch (error) {
+      console.warn('Rasmli menyu tugmalari tozalanmadi:', error.message);
+    }
+    messageId = null;
+  }
 
   if (data === 'menu:home') {
     sessions.delete(chatId);
