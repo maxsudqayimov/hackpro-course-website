@@ -3,10 +3,10 @@
   --bg: #020712;
   --surface: #071426;
   --surface-strong: #11243a;
-  --text: var(--tg-theme-text-color, #f4f8ff);
-  --muted: var(--tg-theme-hint-color, #8ea0b8);
-  --accent: var(--tg-theme-button-color, #31e7c5);
-  --accent-text: var(--tg-theme-button-text-color, #04211c);
+  --text: #f4f8ff;
+  --muted: #9bacc1;
+  --accent: #31e7c5;
+  --accent-text: #04211c;
   --blue: #35a7ff;
   --violet: #9d74ff;
   --border: rgba(177, 210, 236, 0.13);
@@ -59,7 +59,7 @@ h1 em, h2 em { color: var(--accent); font-style: normal; font-weight: inherit; }
 .primary-button, .ghost-button { min-height: 48px; padding: 0 17px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; transition: transform .2s ease, filter .2s ease, border-color .2s ease; }
 .primary-button:active, .ghost-button:active, .course-card:active { transform: scale(.98); }
 .primary-button { border: 0; color: var(--accent-text); background: linear-gradient(135deg, var(--accent), #6df2bd); box-shadow: 0 12px 28px rgba(49,231,197,.15); }
-.ghost-button { border: 1px solid var(--border); background: rgba(255,255,255,.045); }
+.ghost-button { border: 1px solid var(--border); color: var(--text); background: rgba(255,255,255,.045); }
 .full-width { width: 100%; }
 
 .hero-orbit { position: absolute; right: -10px; bottom: -50px; width: 280px; height: 280px; }
