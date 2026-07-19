@@ -212,6 +212,23 @@ body::before {
     background: rgba(0, 240, 255, 0.08);
 }
 
+.nav-links a.platform-nav-link {
+    color: var(--bg-dark);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 0 22px rgba(0, 240, 255, 0.28);
+}
+
+.nav-links a.platform-nav-link:hover {
+    color: var(--bg-dark);
+    background: linear-gradient(135deg, #8ffaff, #75ffd8);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.46);
+    transform: translateY(-2px);
+}
+
+.nav-links a.platform-nav-link::after {
+    display: none;
+}
+
 .nav-links a::after {
     content: '';
     position: absolute;
