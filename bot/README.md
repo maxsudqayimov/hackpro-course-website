@@ -23,7 +23,7 @@ Bu bot HackPro o'quv markazi uchun:
 ```env
 TELEGRAM_BOT_TOKEN=123456789:replace-with-your-token
 ADMIN_CHAT_ID=123456789
-MINI_APP_URL=https://hackpro.uz/miniapp
+MINI_APP_URL=https://hackpro.uz/miniapp?v=20260719-bright1
 ```
 
 3. Botni supervisor bilan ishga tushiring:
