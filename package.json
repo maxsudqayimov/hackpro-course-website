@@ -5,6 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "api": "node backend/src/api.mjs",
+    "worker": "node backend/src/worker.mjs",
+    "gateway": "node backend/src/lab-gateway.mjs",
+    "backend:test": "node --test backend/tests/*.test.mjs",
+    "backend:check": "node --check backend/src/api.mjs && node --check backend/src/worker.mjs",
     "bot": "node bot/supervisor.js",
     "bot:direct": "node bot/index.js",
     "bot:dev": "node --watch bot/index.js",

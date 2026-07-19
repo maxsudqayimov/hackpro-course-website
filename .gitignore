@@ -12,3 +12,6 @@ jarvis-desktop/.venv/
 jarvis-desktop/data/
 
 .vercel
+backend/data/
+backend/*.sqlite*
+data/
