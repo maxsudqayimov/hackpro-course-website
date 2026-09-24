@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HackPro Academy - kiberxavfsizlik, sun'iy intellekt, robototexnika, dasturlash, mobilografiya va SMM kurslari.">
-    <title>HackPro Academy - AI, Robototexnika va Kiberxavfsizlik</title>
-    <link rel="stylesheet" href="/static/css/style.css?v=ai-cyber-1">
+    <meta name="description" content="HackPro Academy - sun'iy intellekt, robototexnika, dasturlash va kiberxavfsizlik kurslari.">
+    <title>HackPro Academy - AI va Robototexnika</title>
+    <link rel="stylesheet" href="/static/css/style.css?v=ai-robot-2">
+    <link rel="stylesheet" href="/static/css/hackpro-custom.css?v=five-courses-1">
 </head>
 <body>
 
@@ -16,6 +17,7 @@
 <nav class="navbar" id="navbar">
     <a href="/" class="nav-logo" aria-label="HackPro Academy">
         <img class="logo-image" src="/static/img/hackpro-logo-transparent.png" alt="HackPro Academy">
+        <span class="logo-wordmark">HackPro <strong>Academy</strong></span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -23,10 +25,13 @@
     <ul class="nav-links" id="navLinks">
         <li><a href="#hero" class="active">Bosh sahifa</a></li>
         <li><a href="#courses">Kurslar</a></li>
-        <li><a href="#features">Afzalliklar</a></li>
+        <li><a href="#features">Biz haqimizda</a></li>
         <li><a href="#contact">Aloqa</a></li>
-        <li><a href="/platform.html" class="platform-nav-link">Platforma</a></li>
     </ul>
+    <div class="nav-actions">
+        <span class="nav-search" aria-hidden="true">⌕</span>
+        <a href="#courses" class="btn-primary nav-action-link">Kurslarni ko'rish →</a>
+    </div>
 </nav>
 
 <section class="hero" id="hero">
@@ -39,72 +44,54 @@
         <div class="hero-text">
             <div class="hero-badge">
                 <span class="pulse-dot"></span>
-                AI, robototexnika va xavfsizlik akademiyasi
+                Yangi imkoniyatlar, yorqin kelajak →
             </div>
             <h1 class="hero-title">
-                Kelajak kasblarini <span class="gradient-text typed-text">Kiberxavfsizlik</span> bilan o'rganing
+                <span class="gradient-text">AI va Robototexnika</span>
+                <small>Kelajak kasblarini bugun o'rganing</small>
             </h1>
             <p class="hero-desc">
-                HackPro Academy'da <strong>kiberxavfsizlik</strong>, <strong>sun'iy intellekt</strong>
-                va <strong>robototexnika</strong> yo'nalishlarini amaliy darslar, real loyihalar
-                va interaktiv platforma orqali o'rganing.
+                Sun'iy intellekt, robototexnika, dasturlash va kiberxavfsizlik bo'yicha
+                amaliy bilimlar. Nazariya + amaliyot + real loyihalar.
             </p>
             <div class="hero-buttons">
-                <a href="#courses" class="btn-primary">Kurslarni ko'rish</a>
-                <a href="/platform.html" class="btn-secondary">Platformaga kirish</a>
+                <a href="#courses" class="btn-primary">Kurslarni ko'rish →</a>
             </div>
-            <div class="hero-pills" aria-label="Asosiy yo'nalishlar">
-                <span>AI loyihalar</span>
-                <span>Robot sensorlar</span>
-                <span>Cyber lab</span>
+            <div class="hero-trust" aria-label="HackPro natijalari">
+                <div class="avatar-stack" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <strong>+2K</strong>
+                <p>10,000+ o'quvchilar allaqachon biz bilan!</p>
             </div>
         </div>
 
-        <div class="hero-3d">
-            <div class="hero-orbit" aria-hidden="true">
-                <span class="orbit-dot dot-ai">AI</span>
-                <span class="orbit-dot dot-robot">BOT</span>
-                <span class="orbit-dot dot-shield">SEC</span>
-            </div>
-            <div class="hero-card-3d">
-                <img src="/static/img/hackpro-cartoon-portrait-preview.png" alt="HackPro mentor">
-                <div class="card-overlay">
-                    <h3>[ HACKPRO MENTOR ]</h3>
-                    <p>AI • Robototexnika • Kiberxavfsizlik</p>
-                </div>
-            </div>
-            <div class="floating-card card-ai">
-                <strong>Sun'iy intellekt</strong>
-                <span>Prompt, avtomatlashtirish, AI vositalari</span>
-            </div>
-            <div class="floating-card card-robot">
-                <strong>Robototexnika</strong>
-                <span>Sensorlar, motorlar, amaliy robotlar</span>
-            </div>
-            <div class="floating-card card-cyber">
-                <strong>Kiberxavfsizlik</strong>
-                <span>Himoya, tarmoq, xavfsiz laboratoriya</span>
-            </div>
+        <div class="hero-3d hero-robot-scene" aria-label="AI va robototexnika vizuali">
+            <img class="hero-reference-image" src="/static/img/course-robotics.png" alt="HackPro AI robot va kurs kartalari">
         </div>
     </div>
 </section>
 
 <div class="stats-bar reveal">
     <div class="stat-item">
-        <div class="stat-number" data-count="100" data-suffix="+">100+</div>
-        <div class="stat-label">O'quvchilar</div>
+        <div class="stat-number" data-count="10000" data-display="10,000+">10,000+</div>
+        <div class="stat-label">Faol o'quvchilar</div>
     </div>
     <div class="stat-item">
-        <div class="stat-number" data-count="10" data-suffix="+">10+</div>
-        <div class="stat-label">Kurslar</div>
+        <div class="stat-number" data-count="200" data-suffix="+">200+</div>
+        <div class="stat-label">Amaliy loyihalar</div>
     </div>
     <div class="stat-item">
         <div class="stat-number" data-count="50" data-suffix="+">50+</div>
-        <div class="stat-label">Loyihalar</div>
+        <div class="stat-label">Professional mentorlar</div>
     </div>
     <div class="stat-item">
-        <div class="stat-number" data-count="98" data-suffix="%">98%</div>
-        <div class="stat-label">Mamnunlik</div>
+        <div class="stat-number" data-count="95" data-suffix="%">95%</div>
+        <div class="stat-label">Bitiruvchilarimiz muvaffaqiyatli</div>
+    </div>
+    <div class="stat-item stat-future">
+        <div class="stat-number" data-count="1" data-display="Yaxshiroq kelajak">Yaxshiroq kelajak</div>
+        <div class="stat-label">Texnologiya orqali</div>
     </div>
 </div>
 
@@ -128,24 +115,25 @@
 
 <section class="courses-section" id="courses">
     <div class="section-header reveal">
-        <div class="section-tag">Kurslar</div>
+        <div class="section-tag">✦ Bizning kurslarimiz</div>
         <h2 class="section-title">Ommabop <span class="gradient-text">yo'nalishlar</span></h2>
         <p class="section-subtitle">Har bir kurs amaliy mashg'ulotlar, mentor yordami va real loyihalar bilan boyitilgan.</p>
     </div>
+    <div class="courses-showcase">
     <div class="courses-grid">
         <a class="course-card reveal" data-index="01" data-delay="0s" href="/course.html?course=kiberxavfsizlik">
             <div class="course-image">
-                <img src="/static/img/course-cybersecurity.png" alt="Kiberxavfsizlik kursi" loading="lazy">
+                <img src="/static/img/course-cybersecurity.png" alt="Kiberxavfsizlik asoslari kursi" loading="lazy">
             </div>
             <div class="course-card-inner">
-                <div class="course-icon icon-blue">🛡️</div>
-                <h3>Kiberxavfsizlik</h3>
-                <p>Tarmoq himoyasi, xavfsiz parol, zaifliklarni aniqlash va amaliy himoya usullarini o'rganing.</p>
+                <div class="course-icon course-icon-cyber" aria-hidden="true"></div>
+                <h3>Kiberxavfsizlik asoslari</h3>
+                <p>Parol, tarmoq, akkaunt va qurilmalarni himoya qilish bo'yicha amaliy bilimlar.</p>
+                <span class="course-arrow" aria-hidden="true">→</span>
                 <div class="course-meta">
                     <span>📚 156 dars</span>
                     <span>⏱️ 312 soat</span>
-                    <span>👥 120 o'quvchi</span>
-                    <span class="course-price">💳 Oyiga 500 000 so'm</span>
+                    <span>💳 Oyiga 500 000 so'm</span>
                 </div>
             </div>
         </a>
@@ -155,14 +143,14 @@
                 <img src="/static/img/course-ai.png" alt="Sun'iy intellekt kursi" loading="lazy">
             </div>
             <div class="course-card-inner">
-                <div class="course-icon icon-purple">🧠</div>
+                <div class="course-icon course-icon-ai" aria-hidden="true"></div>
                 <h3>Sun'iy intellekt</h3>
-                <p>AI vositalari, prompt yozish, neyron tarmoqlar va kundalik ishlarni avtomatlashtirishni o'rganing.</p>
+                <p>Machine Learning, Deep Learning, neyron tarmoqlar va AI amaliyotlari.</p>
+                <span class="course-arrow" aria-hidden="true">→</span>
                 <div class="course-meta">
                     <span>📚 75 dars</span>
                     <span>⏱️ 150 soat</span>
-                    <span>👥 95 o'quvchi</span>
-                    <span class="course-price">💳 Oyiga 200 000 so'm</span>
+                    <span>💳 Oyiga 200 000 so'm</span>
                 </div>
             </div>
         </a>
@@ -172,14 +160,14 @@
                 <img src="/static/img/course-robotics.png" alt="Robototexnika kursi" loading="lazy">
             </div>
             <div class="course-card-inner">
-                <div class="course-icon icon-green">🤖</div>
+                <div class="course-icon course-icon-robot" aria-hidden="true"></div>
                 <h3>Robototexnika</h3>
-                <p>Sensorlar, motorlar, mikrokontrollerlar va robot loyihalarini yig'ish bo'yicha amaliy mashg'ulotlar.</p>
+                <p>Robotlar dizayni, sensorlar, IoT va real loyihalar.</p>
+                <span class="course-arrow" aria-hidden="true">→</span>
                 <div class="course-meta">
                     <span>📚 75 dars</span>
                     <span>⏱️ 150 soat</span>
-                    <span>👥 68 o'quvchi</span>
-                    <span class="course-price">💳 Oyiga 150 000 so'm</span>
+                    <span>💳 Oyiga 150 000 so'm</span>
                 </div>
             </div>
         </a>
@@ -189,31 +177,31 @@
                 <img src="/static/img/course-programming.png" alt="Dasturlash kursi" loading="lazy">
             </div>
             <div class="course-card-inner">
-                <div class="course-icon icon-code">⌘</div>
+                <div class="course-icon course-icon-code" aria-hidden="true"></div>
                 <h3>Dasturlash</h3>
-                <p>Frontend, backend, algoritmlar va real web ilovalar yaratish orqali ko'nikmalarni oshiring.</p>
+                <p>Python, algoritmlar, dastur yaratish va sun'iy intellekt uchun dasturlash.</p>
+                <span class="course-arrow" aria-hidden="true">→</span>
                 <div class="course-meta">
                     <span>📚 132 dars</span>
                     <span>⏱️ 264 soat</span>
-                    <span>👥 82 o'quvchi</span>
-                    <span class="course-price">💳 Oyiga 200 000 so'm</span>
+                    <span>💳 Oyiga 200 000 so'm</span>
                 </div>
             </div>
         </a>
 
-        <a class="course-card reveal" data-index="05" data-delay="0.2s" href="/course.html?course=mobilografiya">
+        <a class="course-card reveal" data-index="05" data-delay="0.2s" href="/course.html?course=kompyuter-savodxonligi">
             <div class="course-image">
-                <img src="/static/img/course-mobilography.png" alt="Mobilografiya kursi" loading="lazy">
+                <img src="/static/img/course-programming.png" alt="Kompyuter savodxonligi kursi" loading="lazy">
             </div>
             <div class="course-card-inner">
-                <div class="course-icon icon-red">🎬</div>
-                <h3>Mobilografiya</h3>
-                <p>Smartfon orqali professional video olish, montaj qilish va kontent sifatini oshirish.</p>
+                <div class="course-icon course-icon-computer" aria-hidden="true"></div>
+                <h3>Kompyuter savodxonligi</h3>
+                <p>Windows, internet, fayllar, ofis dasturlari va kundalik raqamli ko'nikmalar.</p>
+                <span class="course-arrow" aria-hidden="true">→</span>
                 <div class="course-meta">
-                    <span>📚 36 dars</span>
-                    <span>⏱️ 72 soat</span>
-                    <span>👥 110 o'quvchi</span>
-                    <span class="course-price">💳 Oyiga 150 000 so'm</span>
+                    <span>📚 Amaliy darslar</span>
+                    <span>⏱️ Boshlang'ich daraja</span>
+                    <span>💳 Narx kelishiladi</span>
                 </div>
             </div>
         </a>
@@ -235,20 +223,15 @@
             </div>
         </a>
     </div>
-</section>
-
-<section class="lab-section reveal">
-    <div class="lab-visual" aria-hidden="true">
-        <div class="lab-node node-1">AI</div>
-        <div class="lab-node node-2">SEC</div>
-        <div class="lab-node node-3">BOT</div>
-        <div class="lab-line"></div>
+    <div class="future-banner reveal">
+        <img src="/static/img/course-ai.png" alt="" aria-hidden="true">
+        <div>
+            <h3>Katta g'oyalar real natijalarga aylanadi</h3>
+            <p>Kelajak kasblarini zamonaviy laboratoriya va mentorlar bilan boshlang.</p>
+            <a href="#contact" class="btn-primary">Kelajakka birga! →</a>
+        </div>
+        <span>Learn<br>Build<br>Create<br>A Brighter Tomorrow</span>
     </div>
-    <div class="lab-copy">
-        <div class="section-tag">Platforma</div>
-        <h2>Interaktiv laboratoriyada amaliy o'rganing</h2>
-        <p>O'quvchilar nazariya bilan cheklanmaydi: AI vazifalari, robototexnika loyihalari va kiberxavfsizlik mashqlarini bosqichma-bosqich bajaradi.</p>
-        <a href="/platform.html" class="btn-primary">Platformani ochish</a>
     </div>
 </section>
 
@@ -334,7 +317,6 @@
         <ul class="footer-links">
             <li><a href="#hero">Bosh sahifa</a></li>
             <li><a href="#courses">Kurslar</a></li>
-            <li><a href="/platform.html">Platforma</a></li>
             <li><a href="#features">Afzalliklar</a></li>
             <li><a href="#contact">Aloqa</a></li>
         </ul>
@@ -342,6 +324,6 @@
     <div class="footer-copy">&copy; 2026 HackPro Academy - Barcha huquqlar himoyalangan.</div>
 </footer>
 
-<script src="/static/js/main.js?v=ai-cyber-1"></script>
+<script src="/static/js/main.js?v=ai-robot-2"></script>
 </body>
 </html>
