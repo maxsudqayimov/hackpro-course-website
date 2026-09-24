@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(counter => {
         const target = parseInt(counter.dataset.count || '0', 10);
         const suffix = counter.dataset.suffix || '';
-        counter.textContent = target + suffix;
+        counter.textContent = counter.dataset.display || (target + suffix);
     });
 
     const particlesContainer = document.querySelector('.particles');
