@@ -103,28 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(element => revealObserver.observe(element));
 
     const counters = document.querySelectorAll('.stat-number');
-    const counterObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-
-            const target = parseInt(entry.target.dataset.count || '0', 10);
-            const suffix = entry.target.dataset.suffix || '';
-            const duration = 1100;
-            const start = performance.now();
-
-            function tick(now) {
-                const progress = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                entry.target.textContent = Math.floor(target * eased) + suffix;
-                if (progress < 1) requestAnimationFrame(tick);
-            }
-
-            requestAnimationFrame(tick);
-            counterObserver.unobserve(entry.target);
-        });
-    }, { threshold: 0.45 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
+    counters.forEach(counter => {
+        const target = parseInt(counter.dataset.count || '0', 10);
+        const suffix = counter.dataset.suffix || '';
+        counter.textContent = target + suffix;
+    });
 
     const particlesContainer = document.querySelector('.particles');
     if (particlesContainer) {
