@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HackPro Academy kursi haqida batafsil ma'lumot.">
     <title>HackPro Academy - Kurs haqida</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css?v=ai-cyber-1">
 </head>
 <body>
 
-<div class="scanner-line"></div>
-<div class="particles"></div>
-<div class="speed-lines"></div>
-<canvas id="matrixCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<div class="particles" aria-hidden="true"></div>
+<div class="speed-lines" aria-hidden="true"></div>
+<canvas id="matrixCanvas" aria-hidden="true"></canvas>
 
 <nav class="navbar" id="navbar">
-    <a href="/" class="nav-logo">
+    <a href="/" class="nav-logo" aria-label="HackPro Academy">
         <img class="logo-image" src="/static/img/hackpro-logo-transparent.png" alt="HackPro Academy">
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -24,8 +23,9 @@
     <ul class="nav-links" id="navLinks">
         <li><a href="/#hero">Bosh sahifa</a></li>
         <li><a href="/#courses" class="active">Kurslar</a></li>
-        <li><a href="/#features">Biz haqimizda</a></li>
+        <li><a href="/#features">Afzalliklar</a></li>
         <li><a href="/#contact">Aloqa</a></li>
+        <li><a href="/platform.html" class="platform-nav-link">Platforma</a></li>
     </ul>
 </nav>
 
@@ -69,16 +69,15 @@
         <ul class="footer-links">
             <li><a href="/#hero">Bosh sahifa</a></li>
             <li><a href="/#courses">Kurslar</a></li>
-            <li><a href="/#features">Biz haqimizda</a></li>
+            <li><a href="/platform.html">Platforma</a></li>
+            <li><a href="/#features">Afzalliklar</a></li>
             <li><a href="/#contact">Aloqa</a></li>
         </ul>
     </div>
-    <div class="footer-copy">
-        &copy; 2026 HackPro Academy - Barcha huquqlar himoyalangan.
-    </div>
+    <div class="footer-copy">&copy; 2026 HackPro Academy - Barcha huquqlar himoyalangan.</div>
 </footer>
 
-<script src="/static/js/main.js"></script>
-<script src="/static/js/course-detail.js"></script>
+<script src="/static/js/main.js?v=ai-cyber-1"></script>
+<script src="/static/js/course-detail.js?v=ai-cyber-1"></script>
 </body>
 </html>
