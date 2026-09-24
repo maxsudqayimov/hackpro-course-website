@@ -579,3 +579,76 @@
 .detail-panel h3 {
     font-size: clamp(1.45rem, 2vw, 2rem);
 }
+
+/* Final visual match pass for desktop hero. */
+@media (min-width: 1181px) {
+    .hero-logo-watermark {
+        display: none !important;
+    }
+
+    .hero {
+        min-height: clamp(560px, 41vw, 690px);
+        padding-top: clamp(104px, 6vw, 116px);
+        padding-bottom: 8px;
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(455px, 0.46fr) minmax(680px, 0.54fr);
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: clamp(3.65rem, 4.2vw, 5.45rem);
+        line-height: 0.98;
+    }
+
+    .hero-title small {
+        font-size: clamp(2.1rem, 2.45vw, 2.95rem);
+        line-height: 1.16;
+        margin-top: 6px;
+    }
+
+    .hero-desc {
+        max-width: 520px;
+    }
+
+    .hero-robot-scene {
+        align-self: center;
+    }
+}
+
+@media (min-width: 1181px) and (max-width: 1360px) {
+    .hero {
+        min-height: 575px;
+        padding-top: 104px;
+    }
+
+    .hero-content {
+        width: min(1235px, calc(100vw - 38px));
+        grid-template-columns: 455px minmax(690px, 1fr);
+        gap: 0;
+    }
+
+    .hero-title {
+        font-size: 3.35rem;
+        letter-spacing: -0.06em;
+    }
+
+    .hero-title small {
+        font-size: 1.95rem;
+    }
+
+    .hero-desc {
+        max-width: 430px;
+        font-size: 1rem;
+    }
+
+    .hero-reference-image {
+        width: min(126%, 910px);
+        transform: translateX(22px) scale(1.06);
+    }
+
+    .stats-bar {
+        margin-top: -8px;
+    }
+}
