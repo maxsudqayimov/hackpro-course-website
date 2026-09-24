@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HackPro Academy kursi haqida batafsil ma'lumot.">
     <title>HackPro Academy - Kurs haqida</title>
-    <link rel="stylesheet" href="/static/css/style.css?v=ai-cyber-1">
+    <link rel="stylesheet" href="/static/css/style.css?v=ai-robot-2">
+    <link rel="stylesheet" href="/static/css/hackpro-custom.css?v=five-courses-1">
 </head>
 <body>
 
@@ -16,6 +17,7 @@
 <nav class="navbar" id="navbar">
     <a href="/" class="nav-logo" aria-label="HackPro Academy">
         <img class="logo-image" src="/static/img/hackpro-logo-transparent.png" alt="HackPro Academy">
+        <span class="logo-wordmark">HackPro <strong>Academy</strong></span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -23,10 +25,13 @@
     <ul class="nav-links" id="navLinks">
         <li><a href="/#hero">Bosh sahifa</a></li>
         <li><a href="/#courses" class="active">Kurslar</a></li>
-        <li><a href="/#features">Afzalliklar</a></li>
+        <li><a href="/#features">Biz haqimizda</a></li>
         <li><a href="/#contact">Aloqa</a></li>
-        <li><a href="/platform.html" class="platform-nav-link">Platforma</a></li>
     </ul>
+    <div class="nav-actions">
+        <span class="nav-search" aria-hidden="true">⌕</span>
+        <a href="/#courses" class="btn-primary nav-action-link">Kurslarni ko'rish →</a>
+    </div>
 </nav>
 
 <main class="course-detail-main">
@@ -41,7 +46,7 @@
             </div>
         </div>
         <div class="course-detail-image">
-            <img id="courseImage" src="/static/img/course-cybersecurity.png" alt="HackPro Academy kursi">
+            <img id="courseImage" src="/static/img/course-cybersecurity.svg" alt="HackPro Academy kursi">
         </div>
     </section>
 
@@ -69,7 +74,6 @@
         <ul class="footer-links">
             <li><a href="/#hero">Bosh sahifa</a></li>
             <li><a href="/#courses">Kurslar</a></li>
-            <li><a href="/platform.html">Platforma</a></li>
             <li><a href="/#features">Afzalliklar</a></li>
             <li><a href="/#contact">Aloqa</a></li>
         </ul>
@@ -77,7 +81,147 @@
     <div class="footer-copy">&copy; 2026 HackPro Academy - Barcha huquqlar himoyalangan.</div>
 </footer>
 
-<script src="/static/js/main.js?v=ai-cyber-1"></script>
-<script src="/static/js/course-detail.js?v=ai-cyber-1"></script>
+<script src="/static/js/main.js?v=ai-robot-2"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const courses = {
+        kiberxavfsizlik: {
+            title: 'Kiberxavfsizlik asoslari',
+            description: "Internetda xavfsiz ishlash, parollarni himoyalash, tarmoq xavfsizligi va shaxsiy ma'lumotlarni asrash bo'yicha amaliy boshlang'ich kurs.",
+            art: 'cyber',
+            lessons: '156 dars',
+            duration: '312 soat',
+            price: "Oyiga 500 000 so'm",
+            students: "100+ o'quvchi",
+            topics: [
+                "Kiberxavfsizlik tushunchasi va xavf turlari",
+                "Kuchli parol, 2FA va akkaunt xavfsizligi",
+                "Phishing, zararli linklar va firibgarliklarni aniqlash",
+                "Wi-Fi, tarmoq va qurilmalarni himoya qilish",
+                "Amaliy xavfsizlik laboratoriyalari"
+            ]
+        },
+        'suniy-intellekt': {
+            title: "Sun'iy intellekt",
+            description: "AI vositalari, prompt yozish, ma'lumot bilan ishlash va neyron tarmoqlar imkoniyatlarini amaliy topshiriqlar orqali o'rganasiz.",
+            art: 'ai',
+            lessons: '75 dars',
+            duration: '150 soat',
+            price: "Oyiga 200 000 so'm",
+            students: "100+ o'quvchi",
+            topics: [
+                "Sun'iy intellekt asoslari va AI vositalari",
+                "Prompt yozish va natijani yaxshilash usullari",
+                "Matn, rasm va kontent yaratishda AI'dan foydalanish",
+                "Machine Learning va neyron tarmoqlarga kirish",
+                "Real vazifalar uchun AI loyiha tayyorlash"
+            ]
+        },
+        robototexnika: {
+            title: 'Robototexnika',
+            description: "Sensorlar, motorlar, mikrokontrollerlar va real robot loyihalar orqali texnik fikrlash hamda amaliy qurilma yaratishni o'rganasiz.",
+            art: 'robot',
+            lessons: '75 dars',
+            duration: '150 soat',
+            price: "Oyiga 150 000 so'm",
+            students: "100+ o'quvchi",
+            topics: [
+                "Robototexnika va elektronika asoslari",
+                "Sensorlar, motorlar va boshqaruv modullari",
+                "Arduino/mikrokontroller bilan amaliy ishlar",
+                "IoT va aqlli qurilmalar mantig'i",
+                "Mini robot loyihasini yig'ish va sinash"
+            ]
+        },
+        dasturlash: {
+            title: 'Dasturlash',
+            description: "Python, algoritmik fikrlash, web dasturlash va real loyiha yaratish ko'nikmalarini bosqichma-bosqich rivojlantirasiz.",
+            art: 'code',
+            lessons: '132 dars',
+            duration: '264 soat',
+            price: "Oyiga 200 000 so'm",
+            students: "100+ o'quvchi",
+            topics: [
+                "Dasturlash mantiqi va algoritmlar",
+                "Python sintaksisi va amaliy masalalar",
+                "Frontend va web sahifa tuzish asoslari",
+                "Ma'lumotlar bilan ishlash va kichik ilovalar",
+                "Portfolio uchun real dasturiy loyiha"
+            ]
+        },
+        'kompyuter-savodxonligi': {
+            title: 'Kompyuter savodxonligi',
+            description: "Kompyuterdan erkin foydalanish, fayllar bilan ishlash, internet xavfsizligi va ofis dasturlarini amaliy tarzda o'rganasiz.",
+            art: 'computer',
+            lessons: 'Amaliy darslar',
+            duration: "Boshlang'ich daraja",
+            price: 'Narx kelishiladi',
+            students: "100+ o'quvchi",
+            topics: [
+                "Windows va kompyuter qurilmalari bilan tanishish",
+                "Fayl, papka, fleshka va bulut xotira bilan ishlash",
+                "Internet, email va xavfsiz qidiruv ko'nikmalari",
+                "Word, Excel va prezentatsiya asoslari",
+                "Kundalik ishlar uchun raqamli savodxonlik"
+            ]
+        }
+    };
+
+    const aliases = {
+        cybersecurity: 'kiberxavfsizlik',
+        cyber: 'kiberxavfsizlik',
+        'kiberxavfsizlik-asoslari': 'kiberxavfsizlik',
+        ai: 'suniy-intellekt',
+        programming: 'dasturlash',
+        robotics: 'robototexnika',
+        computer: 'kompyuter-savodxonligi'
+    };
+
+    function illustration(kind) {
+        const icon = {
+            cyber: "<path d='M450 96 636 174v130c0 124-76 210-186 256-110-46-186-132-186-256V174L450 96Z' fill='white' fill-opacity='.76' stroke='%231E72FF' stroke-width='18' stroke-linejoin='round'/><path d='M378 286h144M400 356h100M372 236c0-46 34-82 78-82s78 36 78 82' stroke='%23071A3D' stroke-width='22' stroke-linecap='round'/>",
+            ai: "<path d='M370 148c-76 18-116 74-112 142-54 28-78 84-62 140 22 76 84 112 156 100 24 52 76 82 140 70 58-10 96-48 112-102 72-2 132-48 144-120 12-76-32-136-100-154-10-66-62-116-136-124-54-6-100 12-142 48Z' fill='white' fill-opacity='.78' stroke='%2318BF85' stroke-width='18' stroke-linejoin='round'/><path d='M376 250c70 0 108 38 108 108v186M562 230c-66 50-76 116-28 176M302 390c72-42 142-28 182 42M626 410c-70 0-120 36-148 96' stroke='%2318BF85' stroke-width='18' stroke-linecap='round'/>",
+            robot: "<path d='M230 418h260l158-158' stroke='%236B45FF' stroke-width='34' stroke-linecap='round' stroke-linejoin='round'/><rect x='168' y='332' width='238' height='138' rx='28' fill='white' fill-opacity='.82' stroke='%236B45FF' stroke-width='18'/><rect x='548' y='146' width='142' height='142' rx='30' transform='rotate(45 548 146)' fill='white' fill-opacity='.82' stroke='%236B45FF' stroke-width='18'/><path d='M668 98 742 172M138 492h400' stroke='%236B45FF' stroke-width='24' stroke-linecap='round'/><circle cx='286' cy='402' r='22' fill='%2313C8FF'/><circle cx='610' cy='230' r='22' fill='%2313C8FF'/>",
+            code: "<rect x='132' y='112' width='636' height='360' rx='34' fill='white' fill-opacity='.78' stroke='%231E72FF' stroke-width='16'/><rect x='132' y='112' width='636' height='70' rx='34' fill='%23071A3D'/><circle cx='182' cy='147' r='12' fill='%2313C8FF'/><circle cx='222' cy='147' r='12' fill='%2320D6A2'/><circle cx='262' cy='147' r='12' fill='%237A4DFF'/><path d='M362 252 250 334l112 82M538 252l112 82-112 82' stroke='%231E72FF' stroke-width='28' stroke-linecap='round' stroke-linejoin='round'/><path d='M484 230 416 438' stroke='%2313C8FF' stroke-width='22' stroke-linecap='round'/>",
+            computer: "<rect x='176' y='114' width='548' height='318' rx='34' fill='white' fill-opacity='.8' stroke='%2318BF85' stroke-width='18'/><path d='M338 498h224M450 432v66M262 310h376' stroke='%2318BF85' stroke-width='22' stroke-linecap='round'/><path d='M276 202h214M276 248h134M540 202h82M540 248h58' stroke='%231E72FF' stroke-width='18' stroke-linecap='round' opacity='.72'/>"
+        }[kind];
+        const svg = `<svg width='900' height='560' viewBox='0 0 900 560' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='900' height='560' rx='42' fill='url(%23bg)'/><circle cx='704' cy='144' r='126' fill='%2313C8FF' opacity='.13'/><circle cx='172' cy='420' r='146' fill='%237A4DFF' opacity='.1'/>${icon}<defs><linearGradient id='bg' x1='0' y1='0' x2='900' y2='560' gradientUnits='userSpaceOnUse'><stop stop-color='%23E9FFF7'/><stop offset='.55' stop-color='%23F6FBFF'/><stop offset='1' stop-color='%23F4EEFF'/></linearGradient></defs></svg>`;
+        return `data:image/svg+xml;charset=utf-8,${svg}`;
+    }
+
+    const requested = new URLSearchParams(window.location.search).get('course') || 'kiberxavfsizlik';
+    const key = aliases[requested] || requested;
+    const course = courses[key] || courses.kiberxavfsizlik;
+    document.title = `HackPro Academy - ${course.title}`;
+
+    const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    };
+
+    setText('courseTitle', course.title);
+    setText('courseDescription', course.description);
+    setText('courseLessons', course.lessons);
+    setText('courseDuration', course.duration);
+    setText('coursePrice', course.price);
+    setText('courseStudents', course.students);
+
+    const image = document.getElementById('courseImage');
+    if (image) {
+        image.src = illustration(course.art);
+        image.alt = `${course.title} kursi`;
+    }
+
+    const topics = document.getElementById('courseTopics');
+    if (topics) {
+        topics.innerHTML = '';
+        course.topics.forEach(topic => {
+            const li = document.createElement('li');
+            li.textContent = topic;
+            topics.appendChild(li);
+        });
+    }
+});
+</script>
 </body>
 </html>
