@@ -756,3 +756,14 @@ body { background: radial-gradient(circle at 8% 8%, rgba(91, 220, 255, 0.26), tr
 .course-detail-image img { object-fit: contain; padding: 14px; }
 
 .detail-panel h2, .detail-panel h3 { font-size: clamp(1.45rem, 2vw, 2rem); }
+
+
+/* Restore the local preview title gradient after CSS serialization. */
+.gradient-text {
+    background: linear-gradient(120deg, var(--primary-2), var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+}
